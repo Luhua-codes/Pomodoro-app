@@ -1,14 +1,16 @@
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 class Main{
-  public static void main(String[] args){
-	 Timer timer1 = new Timer(10);
-	 timer1.start();
-	/* try {
-		TimeUnit.SECONDS.sleep(5);
-	} catch (InterruptedException e) {
-		e.printStackTrace();
-	}*/
-	 timer1.displayTime();
-  }
+
+	public static void timerSelection() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("");
+		int choice = input.nextInt();
+		input.close();
+	}
+	
+	public static void main(String[] args){
+		TimerController.cycle1();
+	}
 }

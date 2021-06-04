@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit;
+
 public class Timer {
 	private long startTime, elapsedTime, timerLength;
 	
@@ -15,15 +17,29 @@ public class Timer {
 		this.startTime = System.currentTimeMillis();
 	}
 	
-	public void displayTime() {
-		this.elapsedTime = (long)((System.currentTimeMillis() - startTime)/1000.0);
-		System.out.printf("Elapsed time: %d:%02d:%02d%n", (int)(elapsedTime/3600), (int)(elapsedTime%3600)/60, (int)(elapsedTime%60));
-		checkEnd();
-	}
-	
-	public void checkEnd() {
-		if ((long)((System.currentTimeMillis() - startTime)/1000.0) >= timerLength) {
-			System.out.println("Timer is done");
+	public void runTimer() {
+		this.start();
+		while (!this.displayTime()) {
+			try {
+				TimeUnit.SECONDS.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
+	
+	public boolean displayTime() {
+		this.elapsedTime = (long)((System.currentTimeMillis() - startTime)/1000.0);
+		System.out.printf("Elapsed time: %d:%02d:%02d%n", (int)(elapsedTime/3600), (int)(elapsedTime%3600)/60, (int)(elapsedTime%60));
+		return checkEnd();
+	}
+	
+	public boolean checkEnd() {
+		if ((long)((System.currentTimeMillis() - startTime)/1000.0) >= timerLength) {
+			System.out.println("Timer is done");
+			return true;
+		}
+		return false;
+	}
+	
 }
