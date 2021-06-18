@@ -2,15 +2,19 @@ import java.util.concurrent.TimeUnit;
 
 public class Timer {
 	private long startTime, elapsedTime, timerLength;
+	private String name;
 	
-	public Timer(int hours, int minutes, int seconds) {
+	public Timer(int hours, int minutes, int seconds, String name) {
 		this.timerLength = hours*3600 + minutes*60 + seconds;
+		this.name = name;
 	}
-	public Timer(int minutes, int seconds) {
+	public Timer(int minutes, int seconds, String name) {
 		this.timerLength = minutes*60 + seconds;
+		this.name = name;
 	}
-	public Timer(int seconds) {
+	public Timer(int seconds, String name) {
 		this.timerLength = seconds;
+		this.name = name;
 	}
 	
 	public void start() {
@@ -36,7 +40,7 @@ public class Timer {
 	
 	public boolean checkEnd() {
 		if ((long)((System.currentTimeMillis() - startTime)/1000.0) >= timerLength) {
-			System.out.println("Timer is done");
+			System.out.println(this.name + " is done");
 			return true;
 		}
 		return false;
