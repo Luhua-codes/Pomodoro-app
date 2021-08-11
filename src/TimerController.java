@@ -10,13 +10,13 @@ public final class TimerController {
     }
     
     private static ArrayList<Cycle> cycles = new ArrayList<Cycle>(
-    		Arrays.asList(new Cycle(5,1,4,2),//the List.of method would also work
-    		new Cycle(25,5,4,15),
-    		new Cycle(50,10,4,30),
-    		new Cycle(90,15,4,45)));
+    		Arrays.asList(new Cycle(5,1,4,2, "Timer 0"),//the List.of method would also work
+    		new Cycle(25,5,4,15,"Timer 1"),
+    		new Cycle(50,10,4,30, "Timer 2"),
+    		new Cycle(90,15,4,45, "Timer 3")));
 
-    public static void addCycle(int studyTime, int shortBreak, int shortBreakReps, int longBreak) {
-    	cycles.add(new Cycle(studyTime, shortBreak, shortBreakReps, longBreak));
+    public static void addCycle(int studyTime, int shortBreak, int shortBreakReps, int longBreak, String name) {
+    	cycles.add(new Cycle(studyTime, shortBreak, shortBreakReps, longBreak, name));
     }
     public static ArrayList getCycles() {
     	return cycles;

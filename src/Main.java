@@ -12,25 +12,42 @@ class Main {
         return choice;
     }
     public static void addCycle() {
+    	System.out.println("Enter name of cycle");
+    	String name = input.nextLine();
     	System.out.println("Enter length of study time");
-    	int studyTime = input.nextInt();
+    	int studyTime = Integer.parseInt(input.nextLine());
     	System.out.println("Enter length of short break");
-    	int shortBreak = input.nextInt();
+    	int shortBreak = Integer.parseInt(input.nextLine());
     	System.out.println("Enter number of short breaks");
-    	int shortBreakReps = input.nextInt();
+    	int shortBreakReps = Integer.parseInt(input.nextLine());
     	System.out.println("Enter lenghth of long break");
-    	int longBreak = input.nextInt();
-    	TimerController.addCycle(studyTime, shortBreak, shortBreakReps, longBreak); //add possibility of different units
-    	System.out.println(TimerController.getCycles());
+    	int longBreak = Integer.parseInt(input.nextLine());
+    	TimerController.addCycle(studyTime, shortBreak, shortBreakReps, longBreak, name); //add possibility of different units
+    }
+    
+    public static void displayCycles() {
+    	Iterator<Cycle> iterator = TimerController.getCycles().iterator();
+    	while (iterator.hasNext())
+    		System.out.println(iterator.next());
     }
 
     public static void main(String[] args) {
-        System.out.println("Enter 1 to chose a cycle or 2 to create a cycle");
-        int choice = input.nextInt();
-        if (choice == 1)
-            TimerController.runCycle(timerSelection(), 2);
-        else
-        	addCycle();
-        input.close();
+        
+    	while (true) {
+	    	System.out.printf("Menu:%n0. Exit program%n1. Chose a cycle%n2. Create a new cycle%n3. View existing cycles%n");
+	        int choice = Integer.parseInt(input.nextLine());
+	        if (choice == 0) {
+	        	input.close();
+	        	System.exit(1);
+	        }
+	        else if (choice == 1)
+	            TimerController.runCycle(timerSelection(), 2);
+	        else if (choice == 2)
+	        	addCycle();
+	        else if (choice == 3)
+	        	displayCycles();
+	        
+    	}
+    	
     }
 }
