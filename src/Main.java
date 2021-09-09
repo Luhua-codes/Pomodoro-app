@@ -9,7 +9,7 @@ class Main {
         System.out.print("Enter cycle number: ");
         return input.nextInt();
     }
-    public static void addCycle() {
+    public static Cycle addCycle() {
     	System.out.println("Enter name of cycle");
     	String name = input.nextLine();
     	System.out.println("Enter length of study time");
@@ -20,10 +20,10 @@ class Main {
     	int shortBreakReps = Integer.parseInt(input.nextLine());
     	System.out.println("Enter length of long break");
     	int longBreak = Integer.parseInt(input.nextLine());
-    	TimerController.addCycle(studyTime, shortBreak, shortBreakReps, longBreak, name); //add possibility of different units
+    	return new Cycle(studyTime, shortBreak, shortBreakReps, longBreak, name); //add possibility of different units
     }
     
-    public static void modifyCycle(int numDefaultCycles) {
+    public static void modifyCycle(int numDefaultCycles) {// add a way to keep a property the same without retyping its value
     	if (TimerController.getCycles().size() < numDefaultCycles + 1) {
     		System.out.println("There are no custom cycles to modify");
     	}
@@ -32,7 +32,7 @@ class Main {
 	    	for (int x = 4; x<TimerController.getCycles().size(); x++)
 	    		System.out.println(x + ". " + TimerController.getCycles().get(x));
 	    	int selection = Integer.parseInt(input.nextLine());
-	    	
+	    	TimerController.getCycles().get(selection) = addCycle();//don't have a setter for cycle elements
     	}
     }
     
@@ -58,7 +58,7 @@ class Main {
 	        else if (choice == 1)
 	            TimerController.runCycle(timerSelection(), 2);
 	        else if (choice == 2)
-	        	addCycle();
+	        	TimerController.addCycle(addCycle());
 	        else if (choice == 3)
 	        	modifyCycle(numDefaultCycles);
 	        else if (choice == 4)
