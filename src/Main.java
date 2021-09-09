@@ -20,7 +20,7 @@ class Main {
     	int shortBreak = Integer.parseInt(input.nextLine());
     	System.out.println("Enter number of short breaks");
     	int shortBreakReps = Integer.parseInt(input.nextLine());
-    	System.out.println("Enter lenghth of long break");
+    	System.out.println("Enter length of long break");
     	int longBreak = Integer.parseInt(input.nextLine());
     	TimerController.addCycle(studyTime, shortBreak, shortBreakReps, longBreak, name); //add possibility of different units
     }
