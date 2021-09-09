@@ -1,15 +1,13 @@
 package src;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 class Main {
 	static Scanner input = new Scanner(System.in);
 
     public static int timerSelection() {//maybe call runCycle method in here
         System.out.print("Enter cycle number: ");
-        int choice = input.nextInt();
-        return choice;
+        return input.nextInt();
     }
     public static void addCycle() {
     	System.out.println("Enter name of cycle");
@@ -39,9 +37,9 @@ class Main {
     }
     
     public static void displayCycles() {
-    	Iterator<Cycle> iterator = TimerController.getCycles().iterator();
-    	while (iterator.hasNext())
-    		System.out.println(iterator.next());
+		for (Object i : TimerController.getCycles()) {
+			System.out.println(i);
+		}
     }
 
     public static void main(String[] args) {
