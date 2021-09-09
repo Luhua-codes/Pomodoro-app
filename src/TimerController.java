@@ -18,6 +18,11 @@ public final class TimerController {
     public static void addCycle(int studyTime, int shortBreak, int shortBreakReps, int longBreak, String name) {
     	cycles.add(new Cycle(studyTime, shortBreak, shortBreakReps, longBreak, name));
     }
+
+    public static void addCycle(Cycle cycle){
+        cycles.add(cycle);
+    }
+
     public static ArrayList getCycles() {
     	return cycles;
     }
