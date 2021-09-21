@@ -1,5 +1,6 @@
 package src;
 
+import java.io.IOException;
 import java.util.*;
 
 class Main {
@@ -32,7 +33,7 @@ class Main {
 	    	for (int x = 4; x<TimerController.getCycles().size(); x++)
 	    		System.out.println(x + ". " + TimerController.getCycles().get(x));
 	    	int selection = Integer.parseInt(input.nextLine());
-	    	TimerController.getCycles().get(selection) = addCycle();//don't have a setter for cycle elements
+	    	TimerController.modifyCycle(selection, addCycle());
     	}
     }
     
@@ -42,7 +43,8 @@ class Main {
 		}
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+    	TimerController.importCycles();
     	int numDefaultCycles = TimerController.getCycles().size();
         String[] menu = {"Exit program", "Choose a cycle", "Create a new cycle", "Modify a cycle", "View existing cycles"};
     	while (true) {

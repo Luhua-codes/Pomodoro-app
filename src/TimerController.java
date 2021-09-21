@@ -1,7 +1,7 @@
 package src;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
+import java.io.*;
 
 public final class TimerController {
 
@@ -9,11 +9,27 @@ public final class TimerController {
         throw new UnsupportedOperationException("Cannot create object");
     }
     
-    private static ArrayList<Cycle> cycles = new ArrayList<Cycle>(
+    private static ArrayList<Cycle> cycles = new ArrayList<Cycle>();
+    
+    static void importCycles() throws IOException {
+    	File cyclesFile = new File("Cycles file.txt");
+    	Scanner in = new Scanner(cyclesFile);
+    	while (in.hasNextLine()) {
+    		cycles.add(new Cycle(Integer.parseInt(in.nextLine()), Integer.parseInt(in.nextLine()), Integer.parseInt(in.nextLine()), Integer.parseInt(in.nextLine()), in.nextLine()));
+    	}
+    	in.close();
+    }
+    
+    static void exportCycles() throws IOException {
+    	FileWriter file = new FileWriter(new File("Cycles file.txt"), true);
+    	//clear file and update values
+    }
+    
+    /*private static ArrayList<Cycle> cycles = new ArrayList<Cycle>(
     		Arrays.asList(new Cycle(5,1,4,2, "Timer 0"),//the List.of method would also work
     		new Cycle(25,5,4,15,"Timer 1"),
     		new Cycle(50,10,4,30, "Timer 2"),
-    		new Cycle(90,15,4,45, "Timer 3")));
+    		new Cycle(90,15,4,45, "Timer 3")));*/
 
     public static void addCycle(int studyTime, int shortBreak, int shortBreakReps, int longBreak, String name) {
     	cycles.add(new Cycle(studyTime, shortBreak, shortBreakReps, longBreak, name));
@@ -21,6 +37,10 @@ public final class TimerController {
 
     public static void addCycle(Cycle cycle){
         cycles.add(cycle);
+    }
+    
+    public static void modifyCycle(int position, Cycle cycle) {
+    	cycles.set(position, cycle);
     }
 
     public static ArrayList getCycles() {
