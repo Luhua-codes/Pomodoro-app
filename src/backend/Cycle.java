@@ -1,4 +1,4 @@
-package src;
+package src.backend;
 
 public class Cycle {
 	private String name;
