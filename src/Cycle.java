@@ -60,6 +60,10 @@ public class Cycle {
 		return String.format("%s%nStudy time = %d minutes%nShort break = %d minutes%nShort break repetitions = %d%n"
 				+ "Long break = %d minutes%n", name, studyTime, shortBreak, shortBreakReps, longBreak);
 	}
+	
+	public String internalToString() {
+		return String.format("%d%n%d%n%d%n%d%n%s%n", studyTime, shortBreak, shortBreakReps, longBreak, name);
+	}
 
 
 }

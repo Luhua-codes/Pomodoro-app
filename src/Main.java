@@ -55,6 +55,7 @@ class Main {
     		int choice = Integer.parseInt(input.nextLine());
 	        if (choice == 0) {
 	        	input.close();
+	        	TimerController.exportCycles();
 	        	System.exit(1);
 	        }
 	        else if (choice == 1)

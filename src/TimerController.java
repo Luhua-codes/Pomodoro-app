@@ -21,8 +21,13 @@ public final class TimerController {
     }
     
     static void exportCycles() throws IOException {
-    	FileWriter file = new FileWriter(new File("Cycles file.txt"), true);
-    	//clear file and update values
+    	File cyclesFile = new File("Cycles file.txt");
+    	cyclesFile.delete();
+       	FileWriter file = new FileWriter("Cycles file.txt", true);    	
+    	for (Cycle i: cycles) {
+    		file.write(i.internalToString());
+    	}
+    	file.close();
     }
     
     /*private static ArrayList<Cycle> cycles = new ArrayList<Cycle>(
