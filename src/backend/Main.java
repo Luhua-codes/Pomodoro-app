@@ -2,6 +2,7 @@ package src.backend;
 
 import java.io.IOException;
 import java.util.*;
+import src.frontend.*;
 
 class Main {
 	static Scanner input = new Scanner(System.in);
@@ -49,7 +50,8 @@ class Main {
         String[] menu = {"Exit program", "Choose a cycle", "Create a new cycle", "Modify a cycle", "View existing cycles"};
     	while (true) {
 	    	//System.out.printf("Menu:%n0. Exit program%n1. Choose a cycle%n2. Create a new cycle%n3. View existing cycles%n");
-	        for(int x = 0; x < menu.length; x++) {
+	        MainMenu.show();
+    		for(int x = 0; x < menu.length; x++) {
 	        	System.out.println(x + ". " + menu[x]);
 	        }
     		int choice = Integer.parseInt(input.nextLine());
