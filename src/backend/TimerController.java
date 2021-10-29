@@ -1,4 +1,4 @@
-package src;
+package src.backend;
 
 import java.util.*;
 import java.io.*;
@@ -9,7 +9,7 @@ public final class TimerController {
         throw new UnsupportedOperationException("Cannot create object");
     }
     
-    private static ArrayList<Cycle> cycles = new ArrayList<Cycle>();
+    private static ArrayList<Cycle> cycles = new ArrayList<>();
     
     static void importCycles() throws IOException {
     	File cyclesFile = new File("Cycles file.txt");
@@ -21,6 +21,7 @@ public final class TimerController {
     }
     
     static void exportCycles() throws IOException {
+<<<<<<< HEAD:src/TimerController.java
     	File cyclesFile = new File("Cycles file.txt");
     	cyclesFile.delete();
        	FileWriter file = new FileWriter("Cycles file.txt", true);    	
@@ -28,6 +29,10 @@ public final class TimerController {
     		file.write(i.internalToString());
     	}
     	file.close();
+=======
+    	FileWriter file = new FileWriter("Cycles file.txt", true);
+    	//clear file and update values
+>>>>>>> a46ba434cdb2d58b2e683cbd62b03cc4e4185826:src/backend/TimerController.java
     }
     
     /*private static ArrayList<Cycle> cycles = new ArrayList<Cycle>(
@@ -48,7 +53,7 @@ public final class TimerController {
     	cycles.set(position, cycle);
     }
 
-    public static ArrayList getCycles() {
+    public static ArrayList<Cycle> getCycles() {
     	return cycles;
     }
 
