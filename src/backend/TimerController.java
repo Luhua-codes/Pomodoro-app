@@ -11,7 +11,7 @@ public final class TimerController {
     
     private static ArrayList<Cycle> cycles = new ArrayList<>();
     
-    static void importCycles() throws IOException {
+    public static void importCycles() throws IOException {
     	File cyclesFile = new File("Cycles file.txt");
     	Scanner in = new Scanner(cyclesFile);
     	while (in.hasNextLine()) {
@@ -20,7 +20,7 @@ public final class TimerController {
     	in.close();
     }
     
-    static void exportCycles() throws IOException {
+    public static void exportCycles() throws IOException {
     	File cyclesFile = new File("Cycles file.txt");
     	cyclesFile.delete();
        	FileWriter file = new FileWriter("Cycles file.txt", true);    	

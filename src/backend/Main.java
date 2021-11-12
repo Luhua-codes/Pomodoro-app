@@ -5,7 +5,7 @@ import java.util.*;
 import src.frontend.*;
 
 class Main {
-	static Scanner input = new Scanner(System.in);
+	public static Scanner input = new Scanner(System.in);
 
     public static int timerSelection() {//maybe call runCycle method in here
         System.out.print("Enter cycle number: ");
