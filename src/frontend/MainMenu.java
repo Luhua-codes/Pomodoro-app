@@ -34,7 +34,6 @@ public class MainMenu {
 		JLabel label = new JLabel("Pomodoro app");
 		label.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.add(label);
-		
 		panel.add(Box.createRigidArea(new Dimension(0, 10)));
 	}
 	
