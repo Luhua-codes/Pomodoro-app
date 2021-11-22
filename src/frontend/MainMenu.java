@@ -7,12 +7,13 @@ import java.io.*;
 
 public class MainMenu {
 	
-	private static JFrame frame = new JFrame("Pomodoro");
-	private static JPanel panel = new JPanel();
+	protected static JFrame frame = new JFrame("Pomodoro");
+	protected static JPanel panel = new JPanel();
 	
 	public static void show() {
 		frameSetup();
 		panelSetup();
+		screenElements();
 		frame.getContentPane().add(panel);
 		frame.setVisible(true);
 	}
@@ -26,17 +27,18 @@ public class MainMenu {
 	static void panelSetup() {
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		//panel.add(Box.createVerticalGlue());
+		panel.removeAll();
+		panel.revalidate();
+		panel.repaint();
 		
 		JLabel label = new JLabel("Pomodoro app");
 		label.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.add(label);
 		
 		panel.add(Box.createRigidArea(new Dimension(0, 10)));
-		
-		buttonSetup();
 	}
 	
-	static void buttonSetup(){
+	static void screenElements(){
 		JButton choose = new JButton("Choose a cycle");
 		JButton create = new JButton("Create a new cycle");
 		JButton modify = new JButton("Modify a cycle");

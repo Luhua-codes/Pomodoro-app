@@ -48,9 +48,9 @@ class Main {
     	TimerController.importCycles();
     	int numDefaultCycles = TimerController.getCycles().size();
         String[] menu = {"Exit program", "Choose a cycle", "Create a new cycle", "Modify a cycle", "View existing cycles"};
-    	while (true) {
+        MainMenu.show();
+        while (true) {
 	    	//System.out.printf("Menu:%n0. Exit program%n1. Choose a cycle%n2. Create a new cycle%n3. View existing cycles%n");
-	        MainMenu.show();
     		for(int x = 0; x < menu.length; x++) {
 	        	System.out.println(x + ". " + menu[x]);
 	        }
@@ -66,8 +66,10 @@ class Main {
 	        	TimerController.addCycle(addCycle());
 	        else if (choice == 3)
 	        	modifyCycle(numDefaultCycles);
-	        else if (choice == 4)
+	        else if (choice == 4) {
 	        	displayCycles();
+	        	ViewCycles.show();
+	        }
     	}
     	
     }
