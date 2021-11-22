@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import src.backend.TimerController;
 
+import java.awt.*;
+
 public class ViewCycles extends MainMenu{
 	public static void show() {
 		frameSetup();
@@ -17,11 +19,9 @@ public class ViewCycles extends MainMenu{
 		JButton menu = new JButton("Back");
 		panel.add(menu);
 		JLabel label;
-		String cycle;
 		for (Object i : TimerController.getCycles()) {
-			cycle = i.toString();
-			cycle = "<html><body>" + cycle + "</body><html>";
 			label = new JLabel();
+			label.setText("<html><body><p>" + i.toString().replace("\n", "<br>") + "</p></body><html>");
 			panel.add(label);
 		}
 	}
