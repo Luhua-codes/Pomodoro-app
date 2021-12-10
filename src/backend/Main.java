@@ -69,7 +69,6 @@ class Main {
 	        else if (choice == 4) {
 	        	displayCycles();
 	        	ViewCycles.show();
-	        	
 	        }
     	}
     	
