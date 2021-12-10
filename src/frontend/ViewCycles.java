@@ -1,6 +1,8 @@
 package src.frontend;
 
+import java.awt.event.*;
 import javax.swing.*;
+
 import src.backend.TimerController;
 
 public class ViewCycles extends MainMenu{
@@ -16,6 +18,14 @@ public class ViewCycles extends MainMenu{
 	
 	static void screenElements() {
 		JButton back = new JButton("Back");
+		back.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				panel.removeAll();
+				panel.revalidate();
+				panel.repaint();
+				MainMenu.show();
+			}
+		});
 		panel.add(back);
 //		JScrollBar scrollBar = new JScrollBar();
 //		panel.add(scrollBar);
