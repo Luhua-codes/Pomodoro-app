@@ -15,8 +15,8 @@ public class ViewCycles extends MainMenu{
 	}
 	
 	static void screenElements() {
-		JButton menu = new JButton("Back");
-		panel.add(menu);
+		JButton back = new JButton("Back");
+		panel.add(back);
 //		JScrollBar scrollBar = new JScrollBar();
 //		panel.add(scrollBar);
 
