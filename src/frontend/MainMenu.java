@@ -32,22 +32,63 @@ public class MainMenu {
 		panel.repaint();
 		
 		JLabel label = new JLabel("Pomodoro app");
-		//label.setAlignmentX(Component.CENTER_ALIGNMENT);
+		label.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.add(label);
 		panel.add(Box.createRigidArea(new Dimension(0, 10)));
 	}
 	
 	static void screenElements(){
 		JButton choose = new JButton("Choose a cycle");
+		choose.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				panel.removeAll();
+				panel.revalidate();
+				panel.repaint();
+				RunCycle.show();
+			}
+		});
+		choose.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(choose);
+		panel.add(Box.createRigidArea(new Dimension(0, 10)));
+		
 		JButton create = new JButton("Create a new cycle");
+		create.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				panel.removeAll();
+				panel.revalidate();
+				panel.repaint();
+				CreateCycle.show();
+			}
+		});
+		create.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(create);
+		panel.add(Box.createRigidArea(new Dimension(0, 10)));
+		
 		JButton modify = new JButton("Modify a cycle");
+		modify.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				panel.removeAll();
+				panel.revalidate();
+				panel.repaint();
+				ModifyCycle.show();
+			}
+		});
+		modify.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(modify);
+		panel.add(Box.createRigidArea(new Dimension(0, 10)));
+		
 		JButton view = new JButton("View existing cycles");
-		JButton[] buttons = {choose, create, modify, view};
-		for (JButton b: buttons) {
-			b.setAlignmentX(Component.CENTER_ALIGNMENT);
-			panel.add(b);
-			panel.add(Box.createRigidArea(new Dimension(0, 10)));
-		}
+		view.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				panel.removeAll();
+				panel.revalidate();
+				panel.repaint();
+				ViewCycles.show();
+			}
+		});
+		view.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(view);
+		panel.add(Box.createRigidArea(new Dimension(0, 10)));
 	}
 	
 	static void windowClosing(WindowEvent e) throws IOException {

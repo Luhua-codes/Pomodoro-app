@@ -47,9 +47,9 @@ class Main {
     public static void main(String[] args) throws IOException {
     	TimerController.importCycles();
     	int numDefaultCycles = TimerController.getCycles().size();
-        String[] menu = {"Exit program", "Choose a cycle", "Create a new cycle", "Modify a cycle", "View existing cycles"};
+        //String[] menu = {"Exit program", "Choose a cycle", "Create a new cycle", "Modify a cycle", "View existing cycles"};
         MainMenu.show();
-        while (true) {
+        /*while (true) {
 	    	//System.out.printf("Menu:%n0. Exit program%n1. Choose a cycle%n2. Create a new cycle%n3. View existing cycles%n");
     		for(int x = 0; x < menu.length; x++) {
 	        	System.out.println(x + ". " + menu[x]);
@@ -69,9 +69,8 @@ class Main {
 	        else if (choice == 4) {
 	        	displayCycles();
 	        	ViewCycles.show();
-	        	
 	        }
-    	}
+    	}*/
     	
     }
 }
