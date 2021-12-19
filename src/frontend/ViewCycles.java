@@ -1,5 +1,6 @@
 package src.frontend;
 
+import java.awt.Component;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -18,6 +19,7 @@ public class ViewCycles extends MainMenu{
 	
 	static void screenElements() {
 		JButton back = new JButton("Back");
+		back.setAlignmentX(Component.LEFT_ALIGNMENT);
 		back.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				panel.removeAll();
@@ -33,6 +35,7 @@ public class ViewCycles extends MainMenu{
 		JLabel label;
 		for (Object i : TimerController.getCycles()) {
 			label = new JLabel();
+			label.setAlignmentX(Component.LEFT_ALIGNMENT);
 			label.setText("<html><body><p>" + i.toString().replace("\n", "<br>") + "<br></body><html>");
 			panel.add(label);
 		}

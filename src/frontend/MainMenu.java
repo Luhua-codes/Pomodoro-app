@@ -26,7 +26,7 @@ public class MainMenu {
 	
 	static void panelSetup() {
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-		//panel.add(Box.createVerticalGlue());
+		
 		panel.removeAll();
 		panel.revalidate();
 		panel.repaint();
