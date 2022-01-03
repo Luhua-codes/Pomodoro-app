@@ -27,9 +27,9 @@ public class MainMenu {
 	static void panelSetup() {
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		
-		panel.removeAll();
-		panel.revalidate();
-		panel.repaint();
+		//panel.removeAll();
+		//panel.revalidate();
+		//panel.repaint();
 		
 		JLabel label = new JLabel("Pomodoro app");
 		label.setAlignmentX(Component.CENTER_ALIGNMENT);

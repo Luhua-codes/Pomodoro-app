@@ -8,8 +8,8 @@ import src.backend.TimerController;
 
 public class ViewCycles extends MainMenu{
 	public static void show() {
-		frameSetup();
-		panelSetup();
+		//frameSetup();
+		//panelSetup();
 		screenElements();
 
 		JScrollPane scrollPane = new JScrollPane(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -22,15 +22,10 @@ public class ViewCycles extends MainMenu{
 		back.setAlignmentX(Component.LEFT_ALIGNMENT);
 		back.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				panel.removeAll();
-				panel.revalidate();
-				panel.repaint();
 				MainMenu.show();
 			}
 		});
 		panel.add(back);
-//		JScrollBar scrollBar = new JScrollBar();
-//		panel.add(scrollBar);
 
 		JLabel label;
 		for (Object i : TimerController.getCycles()) {
