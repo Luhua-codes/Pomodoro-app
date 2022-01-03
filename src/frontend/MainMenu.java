@@ -26,18 +26,14 @@ public class MainMenu {
 	
 	static void panelSetup() {
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-		
-		//panel.removeAll();
-		//panel.revalidate();
-		//panel.repaint();
-		
+	}
+	
+	protected static void screenElements(){
 		JLabel label = new JLabel("Pomodoro app");
 		label.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.add(label);
 		panel.add(Box.createRigidArea(new Dimension(0, 10)));
-	}
-	
-	static void screenElements(){
+		
 		JButton choose = new JButton("Choose a cycle");
 		choose.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {

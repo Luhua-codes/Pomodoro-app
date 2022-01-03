@@ -1,6 +1,7 @@
 package src.frontend;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -8,8 +9,6 @@ import src.backend.TimerController;
 
 public class ViewCycles extends MainMenu{
 	public static void show() {
-		//frameSetup();
-		//panelSetup();
 		screenElements();
 
 		JScrollPane scrollPane = new JScrollPane(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -17,12 +16,19 @@ public class ViewCycles extends MainMenu{
 		frame.setVisible(true);
 	}
 	
-	static void screenElements() {
+	protected static void screenElements() {
+		JLabel appTitle = new JLabel("Pomodoro app");
+		panel.add(appTitle);
+		panel.add(Box.createRigidArea(new Dimension(0, 10)));
+		
 		JButton back = new JButton("Back");
 		back.setAlignmentX(Component.LEFT_ALIGNMENT);
 		back.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				MainMenu.show();
+				panel.removeAll();
+				panel.revalidate();
+				panel.repaint();
+				MainMenu.screenElements();
 			}
 		});
 		panel.add(back);
