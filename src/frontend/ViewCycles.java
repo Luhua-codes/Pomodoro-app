@@ -31,6 +31,7 @@ public class ViewCycles extends MainMenu{
 				MainMenu.screenElements();
 			}
 		});
+		System.out.println("action listener created");
 		panel.add(back);
 
 		JLabel label;
