@@ -37,10 +37,10 @@ public class MainMenu {
 		
 		JButton choose = new JButton("Choose a cycle");
 		choose.addActionListener(e -> {
-			mainMenuPanel.removeAll();
-			mainMenuPanel.revalidate();
-			mainMenuPanel.repaint();
-			//RunCycle.show();
+//			mainMenuPanel.removeAll();
+//			mainMenuPanel.revalidate();
+//			mainMenuPanel.repaint();
+//			RunCycle.show();
 		});
 		choose.setAlignmentX(Component.CENTER_ALIGNMENT);
 		mainMenuPanel.add(choose);
@@ -48,10 +48,10 @@ public class MainMenu {
 		
 		JButton create = new JButton("Create a new cycle");
 		create.addActionListener(e -> {
-			mainMenuPanel.removeAll();
-			mainMenuPanel.revalidate();
-			mainMenuPanel.repaint();
-			//CreateCycle.show();
+//			mainMenuPanel.removeAll();
+//			mainMenuPanel.revalidate();
+//			mainMenuPanel.repaint();
+//			CreateCycle.show();
 		});
 		create.setAlignmentX(Component.CENTER_ALIGNMENT);
 		mainMenuPanel.add(create);
@@ -59,10 +59,10 @@ public class MainMenu {
 		
 		JButton modify = new JButton("Modify a cycle");
 		create.addActionListener(e -> {
-				mainMenuPanel.removeAll();
-				mainMenuPanel.revalidate();
-				mainMenuPanel.repaint();
-				//ModifyCycle.show();
+//				mainMenuPanel.removeAll();
+//				mainMenuPanel.revalidate();
+//				mainMenuPanel.repaint();
+//				ModifyCycle.show();
 		});
 		modify.setAlignmentX(Component.CENTER_ALIGNMENT);
 		mainMenuPanel.add(modify);
@@ -74,11 +74,12 @@ public class MainMenu {
 				mainMenuPanel.removeAll();
 				mainMenuPanel.revalidate();
 				mainMenuPanel.repaint();
-				ViewCycles.show();
+				ViewCycles viewCycles = new ViewCycles();
+				viewCycles.show();
 			}
 		});
-		view.setAlignmentX(Component.CENTER_ALIGNMENT);
-		mainMenuPanel.add(view);
+		viewExistingCycles.setAlignmentX(Component.CENTER_ALIGNMENT);
+		mainMenuPanel.add(viewExistingCycles);
 		mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 	}
 	
