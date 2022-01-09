@@ -1,22 +1,25 @@
 package src.frontend;
 
-import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 import src.backend.TimerController;
 
 public class ViewCycles{
 	private JFrame viewCyclesFrame = new JFrame("View Existing Cycles");
 	private JPanel viewCyclesPanel = new JPanel();
+	//JScrollPane scrollPane = new JScrollPane(viewCyclesPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 	public void show() {
 		frameSetup();
 		panelSetup();
 		screenElements();
+
 		viewCyclesFrame.getContentPane().add(viewCyclesPanel);
+		//viewCyclesFrame.getContentPane().add(scrollPane);
 		viewCyclesFrame.setVisible(true);
 	}
 
@@ -26,14 +29,12 @@ public class ViewCycles{
 		viewCyclesFrame.setSize(frameWidth, frameHeight);
 	}
 
-	private void panelSetup() {
+	private void panelSetup() { //https://stackoverflow.com/questions/11919941/add-scrollpane-to-jpanel-when-the-panel-is-full-java
 		viewCyclesPanel.setLayout(new BoxLayout(viewCyclesPanel, BoxLayout.PAGE_AXIS));
+		viewCyclesPanel.setBorder(LineBorder.createBlackLineBorder());
 	}
 	
 	protected void screenElements() {
-		JScrollPane scrollPane = new JScrollPane(viewCyclesPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		viewCyclesFrame.add(scrollPane);
-
 		JLabel appTitle = new JLabel("Pomodoro app");
 		viewCyclesPanel.add(appTitle);
 		viewCyclesPanel.add(Box.createRigidArea(new Dimension(0, 10)));
