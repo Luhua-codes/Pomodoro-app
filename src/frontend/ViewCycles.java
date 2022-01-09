@@ -21,7 +21,7 @@ public class ViewCycles{
 	}
 
 	private void frameSetup() {
-		viewCyclesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		viewCyclesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //https://chortle.ccsu.edu/java5/notes/chap56/ch56_9.html
 		int frameWidth = 400, frameHeight = 400;
 		viewCyclesFrame.setSize(frameWidth, frameHeight);
 	}
@@ -32,7 +32,7 @@ public class ViewCycles{
 	
 	protected void screenElements() {
 		JScrollPane scrollPane = new JScrollPane(viewCyclesPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		viewCyclesFrame.getContentPane().add(scrollPane);
+		viewCyclesFrame.add(scrollPane);
 
 		JLabel appTitle = new JLabel("Pomodoro app");
 		viewCyclesPanel.add(appTitle);
