@@ -22,8 +22,6 @@ public class MainMenu {
 		mainMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int frameWidth = 400, frameHeight = 400;
 		mainMenuFrame.setSize(frameWidth, frameHeight);
-
-		
 	}
 	
 	private void panelSetup() {
@@ -79,10 +77,20 @@ public class MainMenu {
 		viewExistingCycles.setAlignmentX(Component.CENTER_ALIGNMENT);
 		mainMenuPanel.add(viewExistingCycles);
 		mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-	}
 
-	static void windowClosing(WindowEvent e) throws IOException {
-		TimerController.exportCycles();
-		System.exit(1);
+		JButton exit = new JButton("Exit App");
+		exit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				try {
+					TimerController.exportCycles();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+				System.exit(1);
+			}
+		});
+		exit.setAlignmentX(Component.CENTER_ALIGNMENT);
+		mainMenuPanel.add(exit);
+		mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 	}
 }
