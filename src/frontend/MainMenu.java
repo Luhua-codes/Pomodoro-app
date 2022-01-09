@@ -7,9 +7,8 @@ import src.backend.*;
 import java.io.*;
 
 public class MainMenu {
-	
-	protected JFrame mainMenuFrame = new JFrame("Pomodoro");
-	protected JPanel mainMenuPanel = new JPanel();
+	private JFrame mainMenuFrame = new JFrame("Pomodoro App");
+	private JPanel mainMenuPanel = new JPanel();
 	
 	public void show() {
 		frameSetup();
@@ -23,6 +22,8 @@ public class MainMenu {
 		mainMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int frameWidth = 400, frameHeight = 400;
 		mainMenuFrame.setSize(frameWidth, frameHeight);
+
+		
 	}
 	
 	private void panelSetup() {
@@ -71,9 +72,6 @@ public class MainMenu {
 		JButton viewExistingCycles = new JButton("View existing cycles");
 		viewExistingCycles.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				mainMenuPanel.removeAll();
-				mainMenuPanel.revalidate();
-				mainMenuPanel.repaint();
 				ViewCycles viewCycles = new ViewCycles();
 				viewCycles.show();
 			}
@@ -82,9 +80,9 @@ public class MainMenu {
 		mainMenuPanel.add(viewExistingCycles);
 		mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 	}
-	
+
 	static void windowClosing(WindowEvent e) throws IOException {
-    	TimerController.exportCycles();
-    	System.exit(1);
+		TimerController.exportCycles();
+		System.exit(1);
 	}
 }
