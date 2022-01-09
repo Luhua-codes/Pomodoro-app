@@ -8,88 +8,81 @@ import java.io.*;
 
 public class MainMenu {
 	
-	protected JFrame frame = new JFrame("Pomodoro");
-	protected JPanel panel = new JPanel();
+	protected JFrame mainMenuFrame = new JFrame("Pomodoro");
+	protected JPanel mainMenuPanel = new JPanel();
 	
 	public void show() {
 		frameSetup();
 		panelSetup();
 		screenElements();
-		frame.getContentPane().add(panel);
-		frame.setVisible(true);
+		mainMenuFrame.getContentPane().add(mainMenuPanel);
+		mainMenuFrame.setVisible(true);
 	}
 
 	private void frameSetup() {
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int frameWidth = 400, frameHeight = 400;
-		frame.setSize(frameWidth, frameHeight);
+		mainMenuFrame.setSize(frameWidth, frameHeight);
 	}
 	
 	private void panelSetup() {
-		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+		mainMenuPanel.setLayout(new BoxLayout(mainMenuPanel, BoxLayout.PAGE_AXIS));
 	}
 	
 	protected void screenElements(){
 		JLabel label = new JLabel("Pomodoro app");
 		label.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.add(label);
-		panel.add(Box.createRigidArea(new Dimension(0, 10)));
+		mainMenuPanel.add(label);
+		mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		
 		JButton choose = new JButton("Choose a cycle");
-		choose.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				panel.removeAll();
-				panel.revalidate();
-				panel.repaint();
-				RunCycle.show();
-			}
+		choose.addActionListener(e -> {
+			mainMenuPanel.removeAll();
+			mainMenuPanel.revalidate();
+			mainMenuPanel.repaint();
+			//RunCycle.show();
 		});
 		choose.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.add(choose);
-		panel.add(Box.createRigidArea(new Dimension(0, 10)));
+		mainMenuPanel.add(choose);
+		mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		
 		JButton create = new JButton("Create a new cycle");
-		create.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				panel.removeAll();
-				panel.revalidate();
-				panel.repaint();
-				CreateCycle.show();
-			}
+		create.addActionListener(e -> {
+			mainMenuPanel.removeAll();
+			mainMenuPanel.revalidate();
+			mainMenuPanel.repaint();
+			//CreateCycle.show();
 		});
 		create.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.add(create);
-		panel.add(Box.createRigidArea(new Dimension(0, 10)));
+		mainMenuPanel.add(create);
+		mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		
 		JButton modify = new JButton("Modify a cycle");
-		modify.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				panel.removeAll();
-				panel.revalidate();
-				panel.repaint();
-				ModifyCycle.show();
-			}
+		create.addActionListener(e -> {
+				mainMenuPanel.removeAll();
+				mainMenuPanel.revalidate();
+				mainMenuPanel.repaint();
+				//ModifyCycle.show();
 		});
 		modify.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.add(modify);
-		panel.add(Box.createRigidArea(new Dimension(0, 10)));
+		mainMenuPanel.add(modify);
+		mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		
-		JButton view = new JButton("View existing cycles");
-		view.addActionListener(new ActionListener(){
+		JButton viewExistingCycles = new JButton("View existing cycles");
+		viewExistingCycles.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				panel.removeAll();
-				panel.revalidate();
-				panel.repaint();
+				mainMenuPanel.removeAll();
+				mainMenuPanel.revalidate();
+				mainMenuPanel.repaint();
 				ViewCycles.show();
 			}
 		});
 		view.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.add(view);
-		panel.add(Box.createRigidArea(new Dimension(0, 10)));
+		mainMenuPanel.add(view);
+		mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 	}
 	
 	static void windowClosing(WindowEvent e) throws IOException {
-		//Main.input.close();
     	TimerController.exportCycles();
     	System.exit(1);
 	}

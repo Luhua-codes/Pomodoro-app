@@ -5,7 +5,9 @@ import src.frontend.*;
 
 class Main {
     public static void main(String[] args) throws IOException {
+        MainMenu mainMenu = new MainMenu();
+
     	TimerController.importCycles();
-        MainMenu.show();
+        mainMenu.show();
     }
 }

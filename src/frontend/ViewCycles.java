@@ -8,7 +8,7 @@ import javax.swing.*;
 import src.backend.TimerController;
 
 public class ViewCycles extends MainMenu{
-	public static void show() {
+	public void show() {
 		screenElements();
 
 		//JScrollPane scrollPane = new JScrollPane(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
