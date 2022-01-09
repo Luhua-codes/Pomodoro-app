@@ -1,4 +1,5 @@
 package src.frontend;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -7,10 +8,10 @@ import java.io.*;
 
 public class MainMenu {
 	
-	protected static JFrame frame = new JFrame("Pomodoro");
-	protected static JPanel panel = new JPanel();
+	protected JFrame frame = new JFrame("Pomodoro");
+	protected JPanel panel = new JPanel();
 	
-	public static void show() {
+	public void show() {
 		frameSetup();
 		panelSetup();
 		screenElements();
@@ -18,17 +19,17 @@ public class MainMenu {
 		frame.setVisible(true);
 	}
 
-	static void frameSetup() {
+	private void frameSetup() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int frameWidth = 400, frameHeight = 400;
 		frame.setSize(frameWidth, frameHeight);
 	}
 	
-	static void panelSetup() {
+	private void panelSetup() {
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 	}
 	
-	protected static void screenElements(){
+	protected void screenElements(){
 		JLabel label = new JLabel("Pomodoro app");
 		label.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.add(label);

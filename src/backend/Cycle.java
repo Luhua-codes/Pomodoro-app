@@ -55,8 +55,6 @@ public class Cycle {
 
 	@Override
 	public String toString() {
-		//return "Cycle [studyTime=" + studyTime + ", shortBreak=" + shortBreak + ", shortBreakReps=" + shortBreakReps
-				//+ ", longBreak=" + longBreak + "]";
 		return String.format("%s%nStudy time = %d minutes%nShort break = %d minutes%nShort break repetitions = %d%n"
 				+ "Long break = %d minutes%n", name, studyTime, shortBreak, shortBreakReps, longBreak);
 	}
@@ -64,12 +62,4 @@ public class Cycle {
 	public String internalToString() {
 		return String.format("%d%n%d%n%d%n%d%n%s%n", studyTime, shortBreak, shortBreakReps, longBreak, name);
 	}
-
-
 }
-/*
- Study time = # minutes
- Short break = # minutes
- Short break repetitions = #
- Long break = # minutes
- */
