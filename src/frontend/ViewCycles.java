@@ -11,8 +11,9 @@ public class ViewCycles extends MainMenu{
 	public static void show() {
 		screenElements();
 
-		JScrollPane scrollPane = new JScrollPane(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		frame.getContentPane().add(scrollPane);
+		//JScrollPane scrollPane = new JScrollPane(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		//frame.getContentPane().add(scrollPane);
+		frame.getContentPane().add(panel);
 		frame.setVisible(true);
 	}
 	
@@ -31,7 +32,6 @@ public class ViewCycles extends MainMenu{
 				MainMenu.screenElements();
 			}
 		});
-		System.out.println("action listener created");
 		panel.add(back);
 
 		JLabel label;
