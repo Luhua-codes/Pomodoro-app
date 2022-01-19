@@ -1,7 +1,6 @@
 package src.frontend;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 import src.backend.*;
@@ -9,8 +8,8 @@ import src.backend.*;
 import java.io.*;
 
 public class MainMenu {
-    private JFrame mainMenuFrame = new JFrame("Pomodoro App");
-    private JPanel mainMenuPanel = new JPanel();
+    private final JFrame mainMenuFrame = new JFrame("Pomodoro App");
+    private final JPanel mainMenuPanel = new JPanel();
 
     public void show() {
         frameSetup();
@@ -71,11 +70,9 @@ public class MainMenu {
         mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton viewExistingCycles = new JButton("View existing cycles");
-        viewExistingCycles.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ViewCycles viewCycles = new ViewCycles();
-                viewCycles.show();
-            }
+        viewExistingCycles.addActionListener(e -> {
+            ViewCycles viewCycles = new ViewCycles();
+            viewCycles.show();
         });
         viewExistingCycles.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainMenuPanel.add(viewExistingCycles);
