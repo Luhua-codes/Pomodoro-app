@@ -31,10 +31,9 @@ public class ViewCycles{
 
 	private void panelSetup() { //https://stackoverflow.com/questions/11919941/add-scrollpane-to-jpanel-when-the-panel-is-full-java
 		viewCyclesPanel.setLayout(new BoxLayout(viewCyclesPanel, BoxLayout.PAGE_AXIS));
-		viewCyclesPanel.setBorder(LineBorder.createBlackLineBorder());
 	}
 	
-	protected void screenElements() {
+	private void screenElements() {
 		JLabel appTitle = new JLabel("Pomodoro app");
 		viewCyclesPanel.add(appTitle);
 		viewCyclesPanel.add(Box.createRigidArea(new Dimension(0, 10)));

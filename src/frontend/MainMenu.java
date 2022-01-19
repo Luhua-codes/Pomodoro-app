@@ -49,10 +49,8 @@ public class MainMenu {
 
         JButton create = new JButton("Create a new cycle");
         create.addActionListener(e -> {
-//			mainMenuPanel.removeAll();
-//			mainMenuPanel.revalidate();
-//			mainMenuPanel.repaint();
-//			CreateCycle.show();
+        	CreateCycle createCycle = new CreateCycle();
+			createCycle.show();
         });
         create.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainMenuPanel.add(create);
