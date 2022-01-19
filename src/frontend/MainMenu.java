@@ -92,13 +92,6 @@ public class MainMenu {
         });
         exit.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainMenuPanel.add(exit);
-        mainMenuPanel.add(Box.createRigidArea(new
-
-                Dimension(0, 10)));
-    }
-
-    private void exitAction() throws IOException {
-        TimerController.exportCycles();
-        System.exit(1);
+        mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
     }
 }
