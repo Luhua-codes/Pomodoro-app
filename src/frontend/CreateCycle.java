@@ -1,11 +1,8 @@
 package src.frontend;
-
 import java.awt.*;
-
 import javax.swing.*;
 
 public class CreateCycle {
-
 	private GridBagConstraints gbc = new GridBagConstraints();
 	private GridBagLayout layout = new GridBagLayout();
 	private final JFrame createCycleFrame = new JFrame("View Existing Cycles");
@@ -17,7 +14,6 @@ public class CreateCycle {
 		screenElements();
 
 		createCycleFrame.getContentPane().add(createCyclePanel);
-		//viewCyclesFrame.getContentPane().add(scrollPane);
 		createCycleFrame.setVisible(true);
 	}
 	
@@ -33,16 +29,15 @@ public class CreateCycle {
 	}
 	
 	private void screenElements() {
-		int yposition = 0;
+		int ypos = 0;
 		
 		JLabel appTitle = new JLabel("Pomodoro app");
 		gbc.gridx = 0;
-		gbc.gridy = yposition;
+		gbc.gridy = ypos;
 		gbc.weighty = 0.2;
 		gbc.anchor = GridBagConstraints.LINE_START;
 		createCyclePanel.add(appTitle);
-		yposition++;
-		//createCyclePanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		ypos++;
 		
 		//add action listener for button, and add error checking
 		TextField[] textFields = {new TextField("Name"), new TextField("Study time"), new TextField("Short break"), new TextField("Short break repetitions"), new TextField("Long break")};
@@ -50,21 +45,19 @@ public class CreateCycle {
 		
 		for (TextField t: textFields) {			
 			gbc.gridx = 0;
-			gbc.gridy = yposition;
+			gbc.gridy = ypos;
 			gbc.weighty = 0.2;
 			gbc.anchor = GridBagConstraints.LINE_START;
 			createCyclePanel.add(t, gbc);
-			yposition++;
+			ypos++;
 		}
 		
 		gbc.gridx = 0;
-		gbc.gridy = yposition;
+		gbc.gridy = ypos;
 		gbc.weighty = 0.2;
 		gbc.anchor = GridBagConstraints.LINE_START;
 		createCyclePanel.add(submit, gbc);
-		yposition++;
-		
-		for (TextField t: textFields) {createCyclePanel.add(t);}
+		ypos++;
 		createCyclePanel.add(submit);
 	}
 }
