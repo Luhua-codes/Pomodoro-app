@@ -1,2 +1,2 @@
 # Pomodoro-app
-Minimalist Pomodoro study timer desktop application
+Minimalist Pomodoro timer desktop application
