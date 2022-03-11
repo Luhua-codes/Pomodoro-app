@@ -1,12 +1,18 @@
 package src.frontend;
 import java.awt.*;
+import java.awt.event.*;
+
 import javax.swing.*;
 
-public class CreateCycle {
+import src.backend.TimerController;
+
+public class CreateCycle implements ActionListener {
 	private GridBagConstraints gbc = new GridBagConstraints();
 	private GridBagLayout layout = new GridBagLayout();
-	private final JFrame createCycleFrame = new JFrame("View Existing Cycles");
+	private final JFrame createCycleFrame = new JFrame("Create a new cycle");
 	private final JPanel createCyclePanel = new JPanel();
+	private TextField[] textFields = {new TextField("Name"), new TextField("Study time"), new TextField("Short break"), new TextField("Short break repetitions"), new TextField("Long break")};
+	
 	
 	public void show() {
 		frameSetup();
@@ -28,6 +34,17 @@ public class CreateCycle {
 		createCyclePanel.setLayout(layout);
 	}
 	
+	public void actionPerformed(ActionEvent submitButton) {
+		String name = textFields[0].getText();
+		int studyTime, shortBreak, shortBreakReps, longBreak;
+		studyTime = Integer.parseInt(textFields[1].getText());
+		shortBreak = Integer.parseInt(textFields[2].getText());
+		shortBreakReps = Integer.parseInt(textFields[3].getText());
+		longBreak = Integer.parseInt(textFields[4].getText());
+		TimerController.addCycle(studyTime, shortBreak, shortBreakReps, longBreak, name);
+		createCycleFrame.dispose();
+	}
+	
 	private void screenElements() {
 		int ypos = 0;
 		
@@ -40,8 +57,8 @@ public class CreateCycle {
 		ypos++;
 		
 		//add action listener for button, and add error checking
-		TextField[] textFields = {new TextField("Name"), new TextField("Study time"), new TextField("Short break"), new TextField("Short break repetitions"), new TextField("Long break")};
 		Button submit = new Button("Submit");
+		submit.addActionListener(this);
 		
 		for (TextField t: textFields) {			
 			gbc.gridx = 0;
