@@ -57,11 +57,9 @@ public class MainMenu {
         mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton modify = new JButton("Modify a cycle");
-        create.addActionListener(e -> {
-//				mainMenuPanel.removeAll();
-//				mainMenuPanel.revalidate();
-//				mainMenuPanel.repaint();
-//				ModifyCycle.show();
+        modify.addActionListener(e -> {
+        	ModifyCycle modifyCycle = new ModifyCycle();
+        	modifyCycle.show();
         });
         modify.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainMenuPanel.add(modify);
