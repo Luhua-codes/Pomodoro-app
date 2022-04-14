@@ -11,15 +11,15 @@ import src.backend.TimerController;
 public class ViewCycles{
 	private JFrame viewCyclesFrame = new JFrame("View Existing Cycles");
 	private JPanel viewCyclesPanel = new JPanel();
-	//JScrollPane scrollPane = new JScrollPane(viewCyclesPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	JScrollPane scrollPane = new JScrollPane(viewCyclesPanel);
 
 	public void show() {
 		frameSetup();
 		panelSetup();
 		screenElements();
 
-		viewCyclesFrame.getContentPane().add(viewCyclesPanel);
-		//viewCyclesFrame.getContentPane().add(scrollPane);
+		//viewCyclesFrame.getContentPane().add(viewCyclesPanel);
+		viewCyclesFrame.getContentPane().add(scrollPane);
 		viewCyclesFrame.setVisible(true);
 	}
 
@@ -27,6 +27,7 @@ public class ViewCycles{
 		viewCyclesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //https://chortle.ccsu.edu/java5/notes/chap56/ch56_9.html
 		int frameWidth = 400, frameHeight = 400;
 		viewCyclesFrame.setSize(frameWidth, frameHeight);
+		
 	}
 
 	private void panelSetup() { //https://stackoverflow.com/questions/11919941/add-scrollpane-to-jpanel-when-the-panel-is-full-java
