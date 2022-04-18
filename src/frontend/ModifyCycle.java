@@ -1,22 +1,17 @@
 package src.frontend;
 
-import java.awt.*;
-import java.util.*;
-import java.util.List;
-import java.util.stream.*;
-
 import javax.swing.*;
 import src.backend.*;
 
+import java.awt.*;
+
 public class ModifyCycle {
-//implement combo boxes for timer display
-	
 	private final JFrame modifyCycleFrame = new JFrame("Modify Cycles");
 	private final JPanel modifyCyclePanel = new JPanel();
 	
 	public void show() {
 		frameSetup();
-		//panelSetup();
+		//panelSetup(); //TODO: Set up a panel format so that the combobox is on a new line
 		screenElements();
 
 		modifyCycleFrame.getContentPane().add(modifyCyclePanel);
@@ -33,26 +28,9 @@ public class ModifyCycle {
 	private void screenElements() {
 		JLabel appTitle = new JLabel("Pomodoro app");
 		modifyCyclePanel.add(appTitle);
-		
-		//try with combo boxes instead: https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
-		/*DefaultListModel listModel = new DefaultListModel();
-		listModel.addElement("test");
-		listModel.addElement("test");
-		listModel.addElement("test");
 
-		
-		JList list = new JList(listModel);
-		
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setLayoutOrientation(JList.VERTICAL);
-		list.setVisibleRowCount(4);*/
-		
-		Vector<String> cycles = (Vector<String>) TimerController.getCycles().stream().map(c -> c.getName()).collect(Collectors.toList()); 
-		//class java.util.ArrayList cannot be cast to class java.util.Vector (java.util.ArrayList and java.util.Vector are in module java.base of loader 'bootstrap')
-		JComboBox<String> cyclesList = new JComboBox<String>(cycles);
-		
-		
+		String[] cycles = TimerController.getCycles().stream().map(Cycle::getName).toArray(String[]::new);
+		JComboBox<String> cyclesList = new JComboBox<>(cycles);
 		modifyCyclePanel.add(cyclesList);
-		//modifyCycleFrame.add(listScroller);
 	}
 }
