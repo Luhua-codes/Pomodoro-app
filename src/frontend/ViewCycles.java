@@ -1,10 +1,7 @@
 package src.frontend;
 
 import java.awt.*;
-import java.awt.event.*;
-import java.io.IOException;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 
 import src.backend.TimerController;
 
@@ -18,7 +15,6 @@ public class ViewCycles{
 		panelSetup();
 		screenElements();
 
-		//viewCyclesFrame.getContentPane().add(viewCyclesPanel);
 		viewCyclesFrame.getContentPane().add(scrollPane);
 		viewCyclesFrame.setVisible(true);
 	}

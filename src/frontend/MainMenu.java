@@ -2,9 +2,7 @@ package src.frontend;
 
 import java.awt.*;
 import javax.swing.*;
-
 import src.backend.*;
-
 import java.io.*;
 
 public class MainMenu {

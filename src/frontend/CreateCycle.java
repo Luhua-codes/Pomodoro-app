@@ -1,9 +1,8 @@
 package src.frontend;
+
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
-
 import src.backend.TimerController;
 
 public class CreateCycle implements ActionListener {
@@ -12,8 +11,7 @@ public class CreateCycle implements ActionListener {
 	private final JFrame createCycleFrame = new JFrame("Create a new cycle");
 	private final JPanel createCyclePanel = new JPanel();
 	private TextField[] textFields = {new TextField("Name"), new TextField("Study time"), new TextField("Short break"), new TextField("Short break repetitions"), new TextField("Long break")};
-	
-	
+
 	public void show() {
 		frameSetup();
 		panelSetup();

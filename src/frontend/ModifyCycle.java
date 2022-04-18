@@ -3,8 +3,6 @@ package src.frontend;
 import javax.swing.*;
 import src.backend.*;
 
-import java.awt.*;
-
 public class ModifyCycle {
 	private final JFrame modifyCycleFrame = new JFrame("Modify Cycles");
 	private final JPanel modifyCyclePanel = new JPanel();
