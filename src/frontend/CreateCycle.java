@@ -10,8 +10,9 @@ public class CreateCycle implements ActionListener {
 	private GridBagLayout layout = new GridBagLayout();
 	private final JFrame createCycleFrame = new JFrame("Create a new cycle");
 	private final JPanel createCyclePanel = new JPanel();
-	private TextField[] textFields = {new TextField("Name"), new TextField("Study time"), new TextField("Short break"), new TextField("Short break repetitions"), new TextField("Long break")};
-
+	private TextField[] textFields = {new TextField("\t\t\t\t"), new TextField("\t"), new TextField("\t"), new TextField("\t"), new TextField("\t")};
+	private String[] textFieldLabels = {"Name", "Study time", "Short break", "Short break repetitions", "Long break"};
+	
 	public void show() {
 		frameSetup();
 		panelSetup();
@@ -43,6 +44,32 @@ public class CreateCycle implements ActionListener {
 		createCycleFrame.dispose();
 	}
 	
+	protected void textFieldSetup(int ypos) {
+		//add action listener for button, and add error checking
+		Button submit = new Button("Submit");
+		submit.addActionListener(this);
+		
+		for (int i = 0; i < textFieldLabels.length; i++) {			
+			gbc.gridx = 0;
+			gbc.gridy = ypos;
+			gbc.weighty = 0.2;
+			gbc.anchor = GridBagConstraints.LINE_START;
+			createCyclePanel.add(new JLabel(textFieldLabels[i]), gbc);
+			ypos++;
+			gbc.gridy = ypos;
+			createCyclePanel.add(textFields[i], gbc);
+			ypos++;
+		}
+		
+		gbc.gridx = 0;
+		gbc.gridy = ypos;
+		gbc.weighty = 0.2;
+		gbc.anchor = GridBagConstraints.LINE_START;
+		createCyclePanel.add(submit, gbc);
+		ypos++;
+		createCyclePanel.add(submit);
+	}
+	
 	private void screenElements() {
 		int ypos = 0;
 		
@@ -54,25 +81,6 @@ public class CreateCycle implements ActionListener {
 		createCyclePanel.add(appTitle);
 		ypos++;
 		
-		//add action listener for button, and add error checking
-		Button submit = new Button("Submit");
-		submit.addActionListener(this);
-		
-		for (TextField t: textFields) {			
-			gbc.gridx = 0;
-			gbc.gridy = ypos;
-			gbc.weighty = 0.2;
-			gbc.anchor = GridBagConstraints.LINE_START;
-			createCyclePanel.add(t, gbc);
-			ypos++;
-		}
-		
-		gbc.gridx = 0;
-		gbc.gridy = ypos;
-		gbc.weighty = 0.2;
-		gbc.anchor = GridBagConstraints.LINE_START;
-		createCyclePanel.add(submit, gbc);
-		ypos++;
-		createCyclePanel.add(submit);
+		textFieldSetup(ypos);
 	}
 }

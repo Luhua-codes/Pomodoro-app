@@ -1,11 +1,14 @@
 package src.frontend;
 
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import src.backend.*;
 
 public class ModifyCycle {
 	private final JFrame modifyCycleFrame = new JFrame("Modify Cycles");
 	private final JPanel modifyCyclePanel = new JPanel();
+	private TextField[] textFields = {new TextField("Name"), new TextField("Study time"), new TextField("Short break"), new TextField("Short break repetitions"), new TextField("Long break")};
 	
 	public void show() {
 		frameSetup();
@@ -29,6 +32,17 @@ public class ModifyCycle {
 
 		String[] cycles = TimerController.getCycles().stream().map(Cycle::getName).toArray(String[]::new);
 		JComboBox<String> cyclesList = new JComboBox<>(cycles);
+		cyclesList.addActionListener(cyclesList);
 		modifyCyclePanel.add(cyclesList);
+		
+		for (TextField t: textFields) {
+			modifyCyclePanel.add(t);
+		}
+	}
+	
+	public void actionPerformed(ActionEvent selectCycle) {
+		JComboBox cb = (JComboBox)selectCycle.getSource();
+		int index = cb.getSelectedIndex();
+		
 	}
 }
