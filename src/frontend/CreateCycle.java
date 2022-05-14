@@ -44,43 +44,32 @@ public class CreateCycle implements ActionListener {
 		createCycleFrame.dispose();
 	}
 	
-	protected void textFieldSetup(int ypos) {
-		//add action listener for button, and add error checking
+	protected void textFieldSetup() {
+		int ypos = 1; //because under title
+		gbc.gridx = 0;
+		gbc.gridy = ypos;
+		gbc.weighty = 0.2;
+		gbc.anchor = GridBagConstraints.LINE_START;
+		
+		//add error checking
 		Button submit = new Button("Submit");
 		submit.addActionListener(this);
 		
 		for (int i = 0; i < textFieldLabels.length; i++) {			
-			gbc.gridx = 0;
-			gbc.gridy = ypos;
-			gbc.weighty = 0.2;
-			gbc.anchor = GridBagConstraints.LINE_START;
+			gbc.gridy = ypos++;
 			createCyclePanel.add(new JLabel(textFieldLabels[i]), gbc);
-			ypos++;
-			gbc.gridy = ypos;
+			gbc.gridy = ypos++;
 			createCyclePanel.add(textFields[i], gbc);
-			ypos++;
 		}
 		
-		gbc.gridx = 0;
-		gbc.gridy = ypos;
-		gbc.weighty = 0.2;
-		gbc.anchor = GridBagConstraints.LINE_START;
+		gbc.gridy = ypos++;
 		createCyclePanel.add(submit, gbc);
-		ypos++;
-		createCyclePanel.add(submit);
 	}
 	
 	private void screenElements() {
-		int ypos = 0;
-		
 		JLabel appTitle = new JLabel("Pomodoro app");
-		gbc.gridx = 0;
-		gbc.gridy = ypos;
-		gbc.weighty = 0.2;
-		gbc.anchor = GridBagConstraints.LINE_START;
 		createCyclePanel.add(appTitle);
-		ypos++;
 		
-		textFieldSetup(ypos);
+		textFieldSetup();
 	}
 }
