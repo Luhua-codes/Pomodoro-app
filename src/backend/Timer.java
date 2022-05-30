@@ -4,8 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Timer {
     private long startTime;
-    private long elapsedTime;
-    private final long timerLength;
+    private long timerLength;
     private final String name;
 
     public Timer(long hours, long minutes, long seconds, String name) {
@@ -39,7 +38,7 @@ public class Timer {
     }
 
     public boolean displayTime() {
-        this.elapsedTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0);
+        long elapsedTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0);
         System.out.printf("Elapsed time: %d:%02d:%02d%n", (int) (elapsedTime / 3600), (int) (elapsedTime % 3600) / 60, (int) (elapsedTime % 60));
         return checkEnd();
     }

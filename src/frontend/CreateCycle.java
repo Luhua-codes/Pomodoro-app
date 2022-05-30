@@ -7,12 +7,12 @@ import javax.swing.*;
 import src.backend.TimerController;
 
 public class CreateCycle implements ActionListener {
-    private GridBagConstraints gbc = new GridBagConstraints();
-    private GridBagLayout layout = new GridBagLayout();
+    private final GridBagConstraints gbc = new GridBagConstraints();
+    private final GridBagLayout layout = new GridBagLayout();
     private final JFrame createCycleFrame = new JFrame("Create a new cycle");
     private final JPanel createCyclePanel = new JPanel();
-    private TextField[] textFields = {new TextField("\t\t\t\t"), new TextField("\t"), new TextField("\t"), new TextField("\t"), new TextField("\t")};
-    private String[] textFieldLabels = {"Name", "Study time", "Short break", "Short break repetitions", "Long break"};
+    private final TextField[] textFields = {new TextField("\t\t\t\t"), new TextField("\t"), new TextField("\t"), new TextField("\t"), new TextField("\t")};
+    private final String[] textFieldLabels = {"Name", "Study time", "Short break", "Short break repetitions", "Long break"};
 
     public void show() {
         frameSetup();

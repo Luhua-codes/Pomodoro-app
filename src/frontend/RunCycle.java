@@ -1,17 +1,16 @@
 package src.frontend;
 
-import java.awt.*;
-import javax.swing.*;
-
 import src.backend.Cycle;
 import src.backend.TimerController;
-import src.frontend.ModifyCycle.SelectActionListener;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class RunCycle {
-	private JFrame runCycleFrame = new JFrame("Run Cycle");
-	private JPanel runCyclePanel = new JPanel();
-	private GridBagConstraints gbc = new GridBagConstraints();
-    private GridBagLayout layout = new GridBagLayout();
+	private final JFrame runCycleFrame = new JFrame("Run Cycle");
+	private final JPanel runCyclePanel = new JPanel();
+	private final GridBagConstraints gbc = new GridBagConstraints();
+    private final GridBagLayout layout = new GridBagLayout();
     
     public void show() {
         frameSetup();

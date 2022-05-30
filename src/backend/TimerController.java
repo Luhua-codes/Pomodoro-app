@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 
 public final class TimerController {
-    private static ArrayList<Cycle> cycles = new ArrayList<>();
+    private static final ArrayList<Cycle> cycles = new ArrayList<>();
 
     private TimerController() {
         throw new UnsupportedOperationException("Cannot create object");
@@ -20,8 +20,6 @@ public final class TimerController {
     }
     
     public static void exportCycles() throws IOException {
-    	File cyclesFile = new File("Cycles file.txt");
-    	cyclesFile.delete();
        	FileWriter file = new FileWriter("Cycles file.txt", true);    	
     	for (Cycle i: cycles) {
     		file.write(i.internalToString());

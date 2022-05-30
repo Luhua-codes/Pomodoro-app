@@ -6,13 +6,13 @@ import javax.swing.*;
 import src.backend.*;
 
 public class ModifyCycle {
-    private GridBagConstraints gbc = new GridBagConstraints();
-    private GridBagLayout layout = new GridBagLayout();
+    private final GridBagConstraints gbc = new GridBagConstraints();
+    private final GridBagLayout layout = new GridBagLayout();
     private final JFrame modifyCycleFrame = new JFrame("Modify Cycles");
     private final JPanel modifyCyclePanel = new JPanel();
-    private Cycle defaultSelection = TimerController.getCycles().get(0);
-    private TextField[] textFields = {new TextField(defaultSelection.getName()), new TextField(Integer.toString(defaultSelection.getStudyTime())), new TextField(Integer.toString(defaultSelection.getShortBreak())), new TextField(Integer.toString(defaultSelection.getShortBreakReps())), new TextField(Integer.toString(defaultSelection.getLongBreak()))};
-    private String[] textFieldLabels = {"Name", "Study time", "Short break", "Short break repetitions", "Long break"};
+    private final Cycle defaultSelection = TimerController.getCycles().get(0);
+    private final TextField[] textFields = {new TextField(defaultSelection.getName()), new TextField(Integer.toString(defaultSelection.getStudyTime())), new TextField(Integer.toString(defaultSelection.getShortBreak())), new TextField(Integer.toString(defaultSelection.getShortBreakReps())), new TextField(Integer.toString(defaultSelection.getLongBreak()))};
+    private final String[] textFieldLabels = {"Name", "Study time", "Short break", "Short break repetitions", "Long break"};
     private int cycle;
 
     public void show() {
@@ -75,7 +75,7 @@ public class ModifyCycle {
 
     class SelectActionListener implements ActionListener {
         public void actionPerformed(ActionEvent selectCycle) {
-            JComboBox<String> cb = (JComboBox<String>) selectCycle.getSource();
+            @SuppressWarnings("unchecked") JComboBox<String> cb = (JComboBox<String>) selectCycle.getSource();
             cycle = cb.getSelectedIndex();
 
             int index = 0;
