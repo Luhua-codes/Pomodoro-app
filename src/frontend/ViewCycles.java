@@ -2,7 +2,6 @@ package src.frontend;
 
 import java.awt.*;
 import javax.swing.*;
-
 import src.backend.TimerController;
 
 public class ViewCycles{

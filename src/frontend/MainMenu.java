@@ -34,15 +34,13 @@ public class MainMenu {
         mainMenuPanel.add(label);
         mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-        JButton choose = new JButton("Choose a cycle");
-        choose.addActionListener(e -> {
-//			mainMenuPanel.removeAll();
-//			mainMenuPanel.revalidate();
-//			mainMenuPanel.repaint();
-//			RunCycle.show();
+        JButton run = new JButton("Run a cycle");
+        run.addActionListener(e -> {
+        	RunCycle runCycle = new RunCycle();
+        	runCycle.show();
         });
-        choose.setAlignmentX(Component.CENTER_ALIGNMENT);
-        mainMenuPanel.add(choose);
+        run.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainMenuPanel.add(run);
         mainMenuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton create = new JButton("Create a new cycle");
