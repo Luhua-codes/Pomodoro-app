@@ -38,6 +38,9 @@ public class ModifyCycle {
     protected void textFieldSetup(int ypos) {
         Button submit = new Button("Submit"); //TODO: add error checking
         submit.addActionListener(new SubmitActionListener());
+        
+        Button delete = new Button("Delete cycle");
+        delete.addActionListener(new DeleteActionListener());
 
         for (int i = 0; i < textFieldLabels.length; i++) {
             gbc.gridy = ypos++;
@@ -48,6 +51,8 @@ public class ModifyCycle {
 
         gbc.gridy = ypos++;
         modifyCyclePanel.add(submit, gbc);
+        gbc.gridx = 1;
+        modifyCyclePanel.add(delete, gbc);
     }
 
     private void screenElements() {
@@ -94,5 +99,12 @@ public class ModifyCycle {
             TimerController.modifyCycle(cycle, new Cycle(studyTime, shortBreak, shortBreakReps, longBreak, name));
             modifyCycleFrame.dispose();
         }
+    }
+    
+    class DeleteActionListener implements ActionListener {
+    	public void actionPerformed(ActionEvent delete) {
+    		TimerController.deleteCycle(cycle);
+    		modifyCycleFrame.dispose();
+    	}
     }
 }

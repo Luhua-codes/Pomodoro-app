@@ -40,6 +40,10 @@ public final class TimerController {
     public static void modifyCycle(int position, Cycle cycle) {
     	cycles.set(position, cycle);
     }
+    
+    public static void deleteCycle(int position) {
+    	cycles.remove(position);
+    }
 
     public static ArrayList<Cycle> getCycles() {
     	return cycles;
