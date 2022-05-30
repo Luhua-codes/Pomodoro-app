@@ -13,6 +13,7 @@ public class ModifyCycle {
     private Cycle defaultSelection = TimerController.getCycles().get(0);
     private TextField[] textFields = {new TextField(defaultSelection.getName()), new TextField(Integer.toString(defaultSelection.getStudyTime())), new TextField(Integer.toString(defaultSelection.getShortBreak())), new TextField(Integer.toString(defaultSelection.getShortBreakReps())), new TextField(Integer.toString(defaultSelection.getLongBreak()))};
     private String[] textFieldLabels = {"Name", "Study time", "Short break", "Short break repetitions", "Long break"};
+    private int cycle;
 
     public void show() {
         frameSetup();
@@ -70,12 +71,15 @@ public class ModifyCycle {
     class SelectActionListener implements ActionListener {
         public void actionPerformed(ActionEvent selectCycle) {
             JComboBox<String> cb = (JComboBox<String>) selectCycle.getSource();
-            int cycle = cb.getSelectedIndex();
+            cycle = cb.getSelectedIndex();
 
             int index = 0;
             textFields[index++].setText(TimerController.getCycles().get(cycle).getName());
-            //TODO: finish implementing text field updates, reference: https://gist.github.com/julianjupiter/c9f7b46ad011b972ed009d73856c35aa
-            //TODO: fix display
+            textFields[index++].setText(Integer.toString(TimerController.getCycles().get(cycle).getStudyTime()));
+            textFields[index++].setText(Integer.toString(TimerController.getCycles().get(cycle).getShortBreak()));
+            textFields[index++].setText(Integer.toString(TimerController.getCycles().get(cycle).getShortBreakReps()));
+            textFields[index++].setText(Integer.toString(TimerController.getCycles().get(cycle).getLongBreak()));
+            modifyCyclePanel.revalidate();
         }
     }
 
@@ -87,7 +91,7 @@ public class ModifyCycle {
             shortBreak = Integer.parseInt(textFields[2].getText());
             shortBreakReps = Integer.parseInt(textFields[3].getText());
             longBreak = Integer.parseInt(textFields[4].getText());
-            TimerController.addCycle(studyTime, shortBreak, shortBreakReps, longBreak, name);
+            TimerController.modifyCycle(cycle, new Cycle(studyTime, shortBreak, shortBreakReps, longBreak, name));
             modifyCycleFrame.dispose();
         }
     }
