@@ -42,15 +42,7 @@ public class RunCycle {
     	runCyclePanel.setLayout(layout);
     }
     
-    private void labelSetup(int ypos) {
-    	for (int i = 0; i < cycleLabels.length; i += 2) {
-    		gbc.gridy = ypos++;
-    		runCyclePanel.add(cycleLabels[i], gbc);
-    		gbc.gridx = 1;
-    		runCyclePanel.add(cycleLabels[i + 1], gbc);
-    		gbc.gridx = 0;
-    	}
-    }
+    	
     
     private void screenElements() {
     	 JLabel appTitle = new JLabel("Pomodoro app");
@@ -67,7 +59,18 @@ public class RunCycle {
          cyclesList.addActionListener(new SelectActionListener());
          runCyclePanel.add(cyclesList, gbc);
          
-         labelSetup(ypos);
+         for (int i = 0; i < cycleLabels.length; i += 2) {
+     		gbc.gridy = ypos++;
+     		runCyclePanel.add(cycleLabels[i], gbc);
+     		gbc.gridx = 1;
+     		runCyclePanel.add(cycleLabels[i + 1], gbc);
+     		gbc.gridx = 0;
+     	}
+         
+        Button run = new Button("Run");
+        run.addActionListener(new RunActionListener());
+        gbc.gridy = ypos++;
+        runCyclePanel.add(run, gbc);
          
          //TODO: add run button with action action listener
          //TODO: update backend run methods
@@ -87,6 +90,12 @@ public class RunCycle {
             cycleLabels[index += 2].setText(Integer.toString(TimerController.getCycles().get(cycle).getShortBreakReps()));
             cycleLabels[index += 2].setText(Integer.toString(TimerController.getCycles().get(cycle).getLongBreak()));
             runCyclePanel.revalidate();
+    	}
+    }
+    
+    class RunActionListener implements ActionListener {
+    	public void actionPerformed(ActionEvent runCycle) {
+    		
     	}
     }
 
