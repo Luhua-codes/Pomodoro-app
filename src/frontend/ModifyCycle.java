@@ -6,12 +6,18 @@ import javax.swing.*;
 import src.backend.*;
 
 public class ModifyCycle {
-    private final GridBagConstraints gbc = new GridBagConstraints();
-    private final GridBagLayout layout = new GridBagLayout();
     private final JFrame modifyCycleFrame = new JFrame("Modify Cycles");
     private final JPanel modifyCyclePanel = new JPanel();
+    private final GridBagConstraints gbc = new GridBagConstraints();
+    private final GridBagLayout layout = new GridBagLayout();
     private final Cycle defaultSelection = TimerController.getCycles().get(0);
-    private final TextField[] textFields = {new TextField(defaultSelection.getName()), new TextField(Integer.toString(defaultSelection.getStudyTime())), new TextField(Integer.toString(defaultSelection.getShortBreak())), new TextField(Integer.toString(defaultSelection.getShortBreakReps())), new TextField(Integer.toString(defaultSelection.getLongBreak()))};
+    private final TextField[] textFields = {
+    		new TextField(defaultSelection.getName()),
+    		new TextField(Integer.toString(defaultSelection.getStudyTime())),
+    		new TextField(Integer.toString(defaultSelection.getShortBreak())),
+    		new TextField(Integer.toString(defaultSelection.getShortBreakReps())),
+    		new TextField(Integer.toString(defaultSelection.getLongBreak()))
+    		};
     private final String[] textFieldLabels = {"Name", "Study time", "Short break", "Short break repetitions", "Long break"};
     private int cycle;
 
