@@ -39,7 +39,7 @@ public class RunCycle {
     }
     
     private void panelSetup() {
-    	runCyclePanel.setLayout(layout);
+    	runCyclePanel.setLayout(layout); //auto-resizes when frame size changes?
     }
     
     	
@@ -71,11 +71,12 @@ public class RunCycle {
         run.addActionListener(new RunActionListener());
         gbc.gridy = ypos++;
         runCyclePanel.add(run, gbc);
-         
-         //TODO: update backend run methods
-         //TODO: clear screen and start running timer with pause and exit buttons
-         //TODO: add a "cycle finished" process (return to combobox or home screen)
-         //TODO: implement action listener
+        
+    }
+    
+    public void timerDisplay(String timeElapsed) {
+    	int frameWidth = 400, frameHeight = 800;
+        runCycleFrame.setSize(frameWidth, frameHeight);
     }
     
     class SelectActionListener implements ActionListener {
@@ -95,8 +96,13 @@ public class RunCycle {
     
     class RunActionListener implements ActionListener {
     	public void actionPerformed(ActionEvent runCycle) {
-    		//TimerController.runCycle();
+    		timerDisplay("");
+    		TimerController.runCycle(cycle, 1);
     	}
     }
+    //TODO: update backend run methods/work on timerDisplay (show elements, update from Timer class)
+    //TODO: clear screen and start running timer with pause and exit buttons
+    //TODO: add a "cycle finished" process (return to combobox or home screen)
+    //TODO: implement run button action listener
 
 }
