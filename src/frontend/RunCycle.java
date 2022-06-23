@@ -72,10 +72,10 @@ public class RunCycle {
         gbc.gridy = ypos++;
         runCyclePanel.add(run, gbc);
          
-         //TODO: add run button with action action listener
          //TODO: update backend run methods
          //TODO: clear screen and start running timer with pause and exit buttons
          //TODO: add a "cycle finished" process (return to combobox or home screen)
+         //TODO: implement action listener
     }
     
     class SelectActionListener implements ActionListener {
@@ -95,7 +95,7 @@ public class RunCycle {
     
     class RunActionListener implements ActionListener {
     	public void actionPerformed(ActionEvent runCycle) {
-    		
+    		//TimerController.runCycle();
     	}
     }
 

@@ -2,6 +2,7 @@ package src.backend;
 
 import java.util.*;
 import java.io.*;
+import java.nio.file.*;
 
 public final class TimerController {
     private static final ArrayList<Cycle> cycles = new ArrayList<>();
@@ -20,6 +21,7 @@ public final class TimerController {
     }
     
     public static void exportCycles() throws IOException {
+    	Files.delete(Paths.get("Cycles file.txt"));
        	FileWriter file = new FileWriter("Cycles file.txt", true);    	
     	for (Cycle i: cycles) {
     		file.write(i.internalToString());

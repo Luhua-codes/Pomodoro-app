@@ -52,6 +52,7 @@ public class ModifyCycle {
             gbc.gridy = ypos++;
             modifyCyclePanel.add(new JLabel(textFieldLabels[i]), gbc);
             gbc.gridy = ypos++;
+            textFields[i].setColumns(5);
             modifyCyclePanel.add(textFields[i], gbc);
         }
 

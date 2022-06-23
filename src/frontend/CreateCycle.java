@@ -11,7 +11,7 @@ public class CreateCycle implements ActionListener {
     private final GridBagLayout layout = new GridBagLayout();
     private final JFrame createCycleFrame = new JFrame("Create a new cycle");
     private final JPanel createCyclePanel = new JPanel();
-    private final TextField[] textFields = {new TextField("\t\t\t\t"), new TextField("\t"), new TextField("\t"), new TextField("\t"), new TextField("\t")};
+    private final TextField[] textFields = {new TextField(), new TextField(), new TextField(), new TextField(), new TextField()};
     private final String[] textFieldLabels = {"Name", "Study time", "Short break", "Short break repetitions", "Long break"};
 
     public void show() {
@@ -59,9 +59,10 @@ public class CreateCycle implements ActionListener {
             gbc.gridy = ypos++;
             createCyclePanel.add(new JLabel(textFieldLabels[i]), gbc);
             gbc.gridy = ypos++;
+            textFields[i].setColumns(5);
             createCyclePanel.add(textFields[i], gbc);
         }
-        //gbc.gridy = ypos++;
+        gbc.gridy = ypos++;
         createCyclePanel.add(submit, gbc);
     }
 

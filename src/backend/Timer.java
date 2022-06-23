@@ -29,6 +29,7 @@ public class Timer {
     public void runTimer() {
         this.start();
         while (!this.displayTime()) {
+        	
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
