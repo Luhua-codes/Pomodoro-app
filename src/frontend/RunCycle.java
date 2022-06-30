@@ -48,9 +48,8 @@ public class RunCycle {
     	 JLabel appTitle = new JLabel("Pomodoro app");
     	 runCyclePanel.add(appTitle);
 
-         int ypos = 1; //because under title
          gbc.gridx = 0;
-         gbc.gridy = ypos++;
+         gbc.gridy = 1; //because under title
          gbc.weighty = 0.2;
          gbc.anchor = GridBagConstraints.LINE_START;
          
@@ -60,7 +59,7 @@ public class RunCycle {
          runCyclePanel.add(cyclesList, gbc);
          
          for (int i = 0; i < cycleLabels.length; i += 2) {
-     		gbc.gridy = ypos++;
+     		gbc.gridy++;
      		runCyclePanel.add(cycleLabels[i], gbc);
      		gbc.gridx = 1;
      		runCyclePanel.add(cycleLabels[i + 1], gbc);
@@ -69,14 +68,16 @@ public class RunCycle {
          
         Button run = new Button("Run");
         run.addActionListener(new RunActionListener());
-        gbc.gridy = ypos++;
+        gbc.gridy++;
         runCyclePanel.add(run, gbc);
         
     }
     
     public void timerDisplay(String timeElapsed) {
-    	int frameWidth = 400, frameHeight = 800;
-        runCycleFrame.setSize(frameWidth, frameHeight);
+    	JLabel time = new JLabel(timeElapsed);
+    	gbc.gridy++;
+    	runCyclePanel.add(time, gbc);
+    	runCyclePanel.revalidate();
     }
     
     class SelectActionListener implements ActionListener {
@@ -96,8 +97,9 @@ public class RunCycle {
     
     class RunActionListener implements ActionListener {
     	public void actionPerformed(ActionEvent runCycle) {
-    		timerDisplay("");
-    		TimerController.runCycle(cycle, 1);
+    		int frameWidth = 400, frameHeight = 800;
+            runCycleFrame.setSize(frameWidth, frameHeight);
+    		//TimerController.runCycle(super, cycle, 1);
     	}
     }
     //TODO: update backend run methods/work on timerDisplay (show elements, update from Timer class)

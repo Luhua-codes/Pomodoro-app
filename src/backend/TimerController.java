@@ -1,6 +1,9 @@
 package src.backend;
 
 import java.util.*;
+
+import src.frontend.RunCycle;
+
 import java.io.*;
 import java.nio.file.*;
 
@@ -49,7 +52,7 @@ public final class TimerController {
     	return cycles;
     }
 
-	public static void runCycle(int cycleNumber, int cycleReps) {
+	public static void runCycle(RunCycle runCycle, int cycleNumber, int cycleReps) {
         //testing code (seconds)
         Timer studyTimer = new Timer(cycles.get(cycleNumber).getStudyTime(), "Focus time");
         Timer sBreakTimer = new Timer(cycles.get(cycleNumber).getShortBreak(), "Short break");
@@ -57,16 +60,16 @@ public final class TimerController {
 
         for (int cycle = 0; cycle < cycleReps; cycle++) {
             for (int x = 0; x < cycles.get(cycleNumber).getShortBreakReps(); x++) {
-                studyTimer.runTimer();
+                studyTimer.runTimer(runCycle);
                 if (x < cycles.get(cycleNumber).getShortBreakReps() - 1)
-                    sBreakTimer.runTimer();
+                    sBreakTimer.runTimer(runCycle);
             }
             if (cycle == cycleReps - 1) {
             	System.out.println("Pomodoro complete.");
             	break;
             }
             System.out.println("Study cycle finished. Long break starting | " + (cycleReps - cycle - 1) + " cycles remaining");
-            lBreakTimer.runTimer();
+            lBreakTimer.runTimer(runCycle);
         }
     }
 }

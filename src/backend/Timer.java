@@ -2,6 +2,8 @@ package src.backend;
 
 import java.util.concurrent.TimeUnit;
 
+import src.frontend.RunCycle;
+
 public class Timer {
     private long startTime;
     private long timerLength;
@@ -26,29 +28,19 @@ public class Timer {
         this.startTime = System.currentTimeMillis();
     }
 
-    public void runTimer() {
+    public void runTimer(RunCycle runCycle) {
         this.start();
-        while (!this.displayTime()) {
-        	
+        long elapsedTime;
+        while (!((long) ((System.currentTimeMillis() - startTime) / 1000.0) >= timerLength)) {
+        	elapsedTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0);
+            runCycle.timerDisplay(String.format("Elapsed time: %d:%02d:%02d%n", (int) (elapsedTime / 3600), (int) (elapsedTime % 3600) / 60, (int) (elapsedTime % 60)));
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        //System.out.println(this.name + " is done");
     }
 
-    public boolean displayTime() {
-        long elapsedTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0);
-        System.out.printf("Elapsed time: %d:%02d:%02d%n", (int) (elapsedTime / 3600), (int) (elapsedTime % 3600) / 60, (int) (elapsedTime % 60));
-        return checkEnd();
-    }
-
-    public boolean checkEnd() {
-        if ((long) ((System.currentTimeMillis() - startTime) / 1000.0) >= timerLength) {
-            System.out.println(this.name + " is done");
-            return true;
-        }
-        return false;
-    }
 }

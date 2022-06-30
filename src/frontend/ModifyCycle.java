@@ -41,7 +41,7 @@ public class ModifyCycle {
         modifyCyclePanel.setLayout(layout);
     }
 
-    protected void textFieldSetup(int ypos) {
+    protected void textFieldSetup() {
         Button submit = new Button("Submit"); //TODO: add error checking
         submit.addActionListener(new SubmitActionListener());
         
@@ -49,14 +49,14 @@ public class ModifyCycle {
         delete.addActionListener(new DeleteActionListener());
 
         for (int i = 0; i < textFieldLabels.length; i++) {
-            gbc.gridy = ypos++;
+            gbc.gridy++;
             modifyCyclePanel.add(new JLabel(textFieldLabels[i]), gbc);
-            gbc.gridy = ypos++;
+            gbc.gridy++;
             textFields[i].setColumns(5);
             modifyCyclePanel.add(textFields[i], gbc);
         }
 
-        gbc.gridy = ypos++;
+        gbc.gridy++;
         modifyCyclePanel.add(submit, gbc);
         gbc.gridx = 1;
         modifyCyclePanel.add(delete, gbc);
@@ -66,9 +66,8 @@ public class ModifyCycle {
         JLabel appTitle = new JLabel("Pomodoro app");
         modifyCyclePanel.add(appTitle);
 
-        int ypos = 1; //because under title
         gbc.gridx = 0;
-        gbc.gridy = ypos++;
+        gbc.gridy = 1; //because under title
         gbc.weighty = 0.2;
         gbc.anchor = GridBagConstraints.LINE_START;
 
@@ -77,7 +76,7 @@ public class ModifyCycle {
         cyclesList.addActionListener(new SelectActionListener());
         modifyCyclePanel.add(cyclesList, gbc);
 
-        textFieldSetup(ypos);
+        textFieldSetup();
     }
 
     class SelectActionListener implements ActionListener {
