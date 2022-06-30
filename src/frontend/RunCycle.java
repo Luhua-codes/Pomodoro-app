@@ -21,13 +21,14 @@ public class RunCycle {
     		new JLabel("Long break: "), new JLabel(Integer.toString(defaultSelection.getLongBreak()))
     		};
     private int cycle;
+	JScrollPane scrollPane = new JScrollPane(runCyclePanel);
     
     public void show() {
         frameSetup();
         panelSetup();
         screenElements();
 
-        runCycleFrame.getContentPane().add(runCyclePanel);
+        runCycleFrame.getContentPane().add(scrollPane);
         runCycleFrame.setVisible(true);
     }
     
