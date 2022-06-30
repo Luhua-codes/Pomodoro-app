@@ -99,7 +99,7 @@ public class RunCycle {
     	public void actionPerformed(ActionEvent runCycle) {
     		int frameWidth = 400, frameHeight = 800;
             runCycleFrame.setSize(frameWidth, frameHeight);
-    		//TimerController.runCycle(super, cycle, 1);
+    		TimerController.runCycle(RunCycle.this ,cycle, 1);
     	}
     }
     //TODO: update backend run methods/work on timerDisplay (show elements, update from Timer class)
