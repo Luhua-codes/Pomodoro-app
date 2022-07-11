@@ -2,6 +2,10 @@ package src.backend;
 
 import java.util.concurrent.TimeUnit;
 
+import src.frontend.RunCycle;
+
+import javax.swing.*;
+
 public class Timer {
     private long startTime;
     private long timerLength;
@@ -26,28 +30,33 @@ public class Timer {
         this.startTime = System.currentTimeMillis();
     }
 
-    public void runTimer() {
+    public void runTimer(RunCycle runCycle) {
         this.start();
-        while (!this.displayTime()) {
+        long elapsedTime;
+        boolean endTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0) >= timerLength;
+        String displayTime;
+
+        while (!endTime) {
             try {
                 TimeUnit.SECONDS.sleep(1);
+                elapsedTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0);
+                displayTime = String.format("Elapsed time: %d:%02d:%02d%n", (int) (elapsedTime / 3600), (int) (elapsedTime % 3600) / 60, (int) (elapsedTime % 60));
+                System.out.print(displayTime);
+
+                runCycle.getGbc().gridy++;
+                runCycle.getRunCyclePanel().add(new JLabel(displayTime), runCycle.getGbc());
+                runCycle.getRunCyclePanel().revalidate();
+                runCycle.getScrollPane().revalidate();
+
+                endTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0) >= timerLength;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        System.out.println(this.name + " is done");
+        runCycle.getGbc().gridy++;
+        runCycle.getRunCyclePanel().add(new JLabel(this.name + " is done"), runCycle.getGbc());
+        runCycle.getRunCycleFrame().revalidate();
     }
 
-    public boolean displayTime() {
-        long elapsedTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0);
-        System.out.printf("Elapsed time: %d:%02d:%02d%n", (int) (elapsedTime / 3600), (int) (elapsedTime % 3600) / 60, (int) (elapsedTime % 60));
-        return checkEnd();
-    }
-
-    public boolean checkEnd() {
-        if ((long) ((System.currentTimeMillis() - startTime) / 1000.0) >= timerLength) {
-            System.out.println(this.name + " is done");
-            return true;
-        }
-        return false;
-    }
 }
