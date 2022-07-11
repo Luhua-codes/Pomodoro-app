@@ -4,6 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 import src.frontend.RunCycle;
 
+import javax.swing.*;
+
 public class Timer {
     private long startTime;
     private long timerLength;
@@ -31,16 +33,30 @@ public class Timer {
     public void runTimer(RunCycle runCycle) {
         this.start();
         long elapsedTime;
-        while (!((long) ((System.currentTimeMillis() - startTime) / 1000.0) >= timerLength)) {
-        	elapsedTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0);
-            runCycle.timerDisplay(String.format("Elapsed time: %d:%02d:%02d%n", (int) (elapsedTime / 3600), (int) (elapsedTime % 3600) / 60, (int) (elapsedTime % 60)));
+        boolean endTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0) >= timerLength;
+        String displayTime;
+
+        while (!endTime) {
             try {
                 TimeUnit.SECONDS.sleep(1);
+                elapsedTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0);
+                displayTime = String.format("Elapsed time: %d:%02d:%02d%n", (int) (elapsedTime / 3600), (int) (elapsedTime % 3600) / 60, (int) (elapsedTime % 60));
+                System.out.print(displayTime);
+
+                runCycle.getGbc().gridy++;
+                runCycle.getRunCyclePanel().add(new JLabel(displayTime), runCycle.getGbc());
+                runCycle.getRunCyclePanel().revalidate();
+                runCycle.getScrollPane().revalidate();
+
+                endTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0) >= timerLength;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        //System.out.println(this.name + " is done");
+        System.out.println(this.name + " is done");
+        runCycle.getGbc().gridy++;
+        runCycle.getRunCyclePanel().add(new JLabel(this.name + " is done"), runCycle.getGbc());
+        runCycle.getRunCycleFrame().revalidate();
     }
 
 }

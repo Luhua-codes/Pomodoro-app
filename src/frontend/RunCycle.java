@@ -36,11 +36,11 @@ public class RunCycle {
     	runCycleFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //https://chortle.ccsu.edu/java5/notes/chap56/ch56_9.html
         int frameWidth = 400, frameHeight = 400;
         runCycleFrame.setSize(frameWidth, frameHeight);
-        runCycleFrame.setResizable(false);
+        runCycleFrame.setResizable(true);
     }
     
     private void panelSetup() {
-    	runCyclePanel.setLayout(layout); //auto-resizes when frame size changes?
+    	runCyclePanel.setLayout(layout); //auto-resizes when frame size changes
     }
     
     	
@@ -71,16 +71,8 @@ public class RunCycle {
         run.addActionListener(new RunActionListener());
         gbc.gridy++;
         runCyclePanel.add(run, gbc);
-        
     }
-    
-    public void timerDisplay(String timeElapsed) {
-    	JLabel time = new JLabel(timeElapsed);
-    	gbc.gridy++;
-    	runCyclePanel.add(time, gbc);
-    	runCyclePanel.revalidate();
-    }
-    
+
     class SelectActionListener implements ActionListener {
     	public void actionPerformed(ActionEvent selectCycle) {
     		JComboBox<String> cb = (JComboBox<String>) selectCycle.getSource();
@@ -91,18 +83,35 @@ public class RunCycle {
             cycleLabels[index += 2].setText(Integer.toString(TimerController.getCycles().get(cycle).getStudyTime()));
             cycleLabels[index += 2].setText(Integer.toString(TimerController.getCycles().get(cycle).getShortBreak()));
             cycleLabels[index += 2].setText(Integer.toString(TimerController.getCycles().get(cycle).getShortBreakReps()));
-            cycleLabels[index += 2].setText(Integer.toString(TimerController.getCycles().get(cycle).getLongBreak()));
+            cycleLabels[index + 2].setText(Integer.toString(TimerController.getCycles().get(cycle).getLongBreak()));
             runCyclePanel.revalidate();
     	}
     }
     
     class RunActionListener implements ActionListener {
     	public void actionPerformed(ActionEvent runCycle) {
-    		int frameWidth = 400, frameHeight = 800;
-            runCycleFrame.setSize(frameWidth, frameHeight);
-    		TimerController.runCycle(RunCycle.this ,cycle, 1);
+    		//int frameWidth = 400, frameHeight = 800;
+            //runCycleFrame.setSize(frameWidth, frameHeight);
+    		TimerController.runCycle(RunCycle.this,cycle, 1);
     	}
     }
+
+    public JPanel getRunCyclePanel() {
+        return runCyclePanel;
+    }
+
+    public JFrame getRunCycleFrame() {
+        return runCycleFrame;
+    }
+
+    public GridBagConstraints getGbc() {
+        return gbc;
+    }
+
+    public JScrollPane getScrollPane(){
+        return scrollPane;
+    }
+
     //TODO: update backend run methods/work on timerDisplay (show elements, update from Timer class)
     //TODO: clear screen and start running timer with pause and exit buttons
     //TODO: add a "cycle finished" process (return to combobox or home screen)
