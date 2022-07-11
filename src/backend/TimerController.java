@@ -2,6 +2,8 @@ package src.backend;
 
 import java.util.*;
 
+import javax.swing.JLabel;
+
 import src.frontend.RunCycle;
 
 import java.io.*;
@@ -53,7 +55,6 @@ public final class TimerController {
     }
 
 	public static void runCycle(RunCycle runCycle, int cycleNumber, int cycleReps) {
-        //testing code (seconds)
         Timer studyTimer = new Timer(cycles.get(cycleNumber).getStudyTime(), "Focus time");
         Timer sBreakTimer = new Timer(cycles.get(cycleNumber).getShortBreak(), "Short break");
         Timer lBreakTimer = new Timer(cycles.get(cycleNumber).getLongBreak(), "Long Break");

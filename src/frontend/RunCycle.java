@@ -92,9 +92,12 @@ public class RunCycle {
     	public void actionPerformed(ActionEvent runCycle) {
     		//int frameWidth = 400, frameHeight = 800;
             //runCycleFrame.setSize(frameWidth, frameHeight);
-    		TimerController.runCycle(RunCycle.this,cycle, 1);
+    		TimerController.runCycle(RunCycle.this, cycle, 1);
     	}
     }
+    //TODO: Update timer class
+    //https://stackoverflow.com/questions/25337676/update-jlabel-repeatedly-with-results-of-long-running-task
+    //https://www.geeksforgeeks.org/swingworker-in-java/
 
     public JPanel getRunCyclePanel() {
         return runCyclePanel;
@@ -111,10 +114,4 @@ public class RunCycle {
     public JScrollPane getScrollPane(){
         return scrollPane;
     }
-
-    //TODO: update backend run methods/work on timerDisplay (show elements, update from Timer class)
-    //TODO: clear screen and start running timer with pause and exit buttons
-    //TODO: add a "cycle finished" process (return to combobox or home screen)
-    //TODO: implement run button action listener
-
 }

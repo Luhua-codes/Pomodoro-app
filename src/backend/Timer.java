@@ -39,24 +39,26 @@ public class Timer {
         while (!endTime) {
             try {
                 TimeUnit.SECONDS.sleep(1);
-                elapsedTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0);
-                displayTime = String.format("Elapsed time: %d:%02d:%02d%n", (int) (elapsedTime / 3600), (int) (elapsedTime % 3600) / 60, (int) (elapsedTime % 60));
-                System.out.print(displayTime);
-
-                runCycle.getGbc().gridy++;
-                runCycle.getRunCyclePanel().add(new JLabel(displayTime), runCycle.getGbc());
-                runCycle.getRunCyclePanel().revalidate();
-                runCycle.getScrollPane().revalidate();
-
-                endTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0) >= timerLength;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            elapsedTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0);
+            displayTime = String.format("Elapsed time: %d:%02d:%02d%n", (int) (elapsedTime / 3600), (int) (elapsedTime % 3600) / 60, (int) (elapsedTime % 60));
+            System.out.print(displayTime);
+
+            runCycle.getGbc().gridy++;
+            runCycle.getRunCyclePanel().add(new JLabel(displayTime), runCycle.getGbc());
+            runCycle.getRunCyclePanel().revalidate();
+            runCycle.getScrollPane().revalidate();
+
+            endTime = (long) ((System.currentTimeMillis() - startTime) / 1000.0) >= timerLength;
         }
         System.out.println(this.name + " is done");
         runCycle.getGbc().gridy++;
         runCycle.getRunCyclePanel().add(new JLabel(this.name + " is done"), runCycle.getGbc());
-        runCycle.getRunCycleFrame().revalidate();
+        runCycle.getRunCyclePanel().revalidate();
+        runCycle.getScrollPane().revalidate();
+        //runCycle.getRunCycleFrame().revalidate();
     }
 
 }
