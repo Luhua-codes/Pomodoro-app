@@ -55,9 +55,9 @@ public final class TimerController {
     }
 
 	public static void runCycle(RunCycle runCycle, int cycleNumber, int cycleReps) {
-        Timer studyTimer = new Timer(cycles.get(cycleNumber).getStudyTime(), "Focus time");
-        Timer sBreakTimer = new Timer(cycles.get(cycleNumber).getShortBreak(), "Short break");
-        Timer lBreakTimer = new Timer(cycles.get(cycleNumber).getLongBreak(), "Long Break");
+        Timer studyTimer = new Timer(cycles.get(cycleNumber).getStudyTime(), 0, "Focus time");
+        Timer sBreakTimer = new Timer(cycles.get(cycleNumber).getShortBreak(), 0, "Short break");
+        Timer lBreakTimer = new Timer(cycles.get(cycleNumber).getLongBreak(), 0, "Long Break");
 
         for (int cycle = 0; cycle < cycleReps; cycle++) {
             for (int x = 0; x < cycles.get(cycleNumber).getShortBreakReps(); x++) {
@@ -67,6 +67,8 @@ public final class TimerController {
             }
             if (cycle == cycleReps - 1) {
             	System.out.println("Pomodoro complete.");
+                runCycle.getGbc().gridy++;
+                runCycle.getRunCyclePanel().add(new JLabel("Pomodoro complete"), runCycle.getGbc());
             	break;
             }
             System.out.println("Study cycle finished. Long break starting | " + (cycleReps - cycle - 1) + " cycles remaining");
